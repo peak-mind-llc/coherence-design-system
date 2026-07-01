@@ -1,0 +1,22 @@
+/* Base-layer reset for standalone consumers of @coherence/design-system.
+ *
+ * Tailwind v4 / shadcn ship components with a bare `border` utility whose
+ * border-COLOR falls back to `currentColor` unless the consuming app resets
+ * it. The Coherence workstation app already provides this reset in its own
+ * globals (desktop/src/index.css), so it does NOT need this file. Other
+ * consumers (e.g. the recorder) that render kit components — Card, Dialog,
+ * Sheet, Drawer, Hover Card, Navigation Menu, Resizable, the Field choice
+ * rows, etc. — MUST import this so their bare borders resolve to the
+ * design-system default border color instead of currentColor.
+ *
+ * Import once, after the tokens (which define --border-default):
+ *   import '@coherence/design-system/tokens.css'
+ *   import '@coherence/design-system/base.css'
+ */
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--border-default);
+  }
+}

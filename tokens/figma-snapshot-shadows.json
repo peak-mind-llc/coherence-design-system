@@ -1,0 +1,12 @@
+{
+  "$comment": "Code<->Figma contract for SHADOWS (PEA-219 spacing+shadow). The 5 elevation levels (sm/md/lg/xl/2xl) are the app's warm, mode-aware values (code is the source of truth — it looks better than stock Tailwind). The Figma 'shadows' collection holds matching per-attribute tokens (x/y/blur/spread + color) composed into the shadow-sm/md/lg/xl/2xl effect styles, mode-aware (light/dark). check_shadow_drift.mjs asserts the app's TWO shadow definition sites stay equal to these values: desktop/src/index.css (:root + .dark, the shadcn/Storybook scope) and desktop/src/styles/tokens.css ([data-theme=light|dark], the legacy app scope). To refresh after an intentional change: edit both sites + this file together. shadow-xs/2xs are folded into sm; xl/2xl were re-added in the hardening pass for modal/drawer/overlay components that previously fell back to stock Tailwind.",
+  "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+  "figmaCollection": "shadows",
+  "shadows": {
+    "sm": { "light": "0 1px 2px rgba(28,28,26,0.04)", "dark": "0 1px 2px rgba(0,0,0,0.20)", "figmaStyle": "shadow-sm" },
+    "md": { "light": "0 2px 8px rgba(28,28,26,0.06)", "dark": "0 2px 8px rgba(0,0,0,0.30)", "figmaStyle": "shadow-md" },
+    "lg": { "light": "0 8px 24px rgba(28,28,26,0.08)", "dark": "0 8px 24px rgba(0,0,0,0.40)", "figmaStyle": "shadow-lg" },
+    "xl": { "light": "0 12px 32px rgba(28,28,26,0.10)", "dark": "0 12px 32px rgba(0,0,0,0.50)", "figmaStyle": "shadow-xl" },
+    "2xl": { "light": "0 20px 48px rgba(28,28,26,0.12)", "dark": "0 20px 48px rgba(0,0,0,0.60)", "figmaStyle": "shadow-2xl" }
+  }
+}

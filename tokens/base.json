@@ -1,0 +1,75 @@
+{
+  "$schema": "https://design-tokens.org/schema/",
+  "radius-0": {
+    "$value": "0px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 0px. Aliased by --radius-none."
+  },
+  "radius-2": {
+    "$value": "2px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 2px. Aliased by --radius-2xs."
+  },
+  "radius-4": {
+    "$value": "4px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 4px. Aliased by --radius-xs."
+  },
+  "radius-6": {
+    "$value": "6px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 6px. Aliased by --radius-sm."
+  },
+  "radius-8": {
+    "$value": "8px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 8px. Aliased by --radius-md (dominant rung)."
+  },
+  "radius-10": {
+    "$value": "10px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 10px. Aliased by --radius-lg."
+  },
+  "radius-12": {
+    "$value": "12px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 12px. Aliased by --radius-xl."
+  },
+  "radius-14": {
+    "$value": "14px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 14px. Aliased by --radius-2xl."
+  },
+  "radius-16": {
+    "$value": "16px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 16px. Aliased by --radius-3xl."
+  },
+  "radius-20": {
+    "$value": "20px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 20px. Aliased by --radius-4xl. Added in the Path C 12-rung scale (fills the 16→24 gap)."
+  },
+  "radius-24": {
+    "$value": "24px",
+    "$type": "dimension",
+    "$description": "Radius primitive — 24px. Aliased by --radius-5xl."
+  },
+  "radius-9999": {
+    "$value": "9999px",
+    "$type": "dimension",
+    "$description": "Radius primitive — pill / circle. Aliased by --radius-round (and --radius-full, a deprecated back-compat alias)."
+  },
+  "font": {
+    "sans": {
+      "$value": "'Inter Variable', system-ui, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Canonical sans family for the design system. Inter Variable woff2 is shipped in the package."
+    },
+    "heading": {
+      "$value": "{font.sans}",
+      "$type": "fontFamily",
+      "$description": "Headings inherit from sans (matches the Vega preset's --font-heading: var(--font-sans))."
+    }
+  }
+}

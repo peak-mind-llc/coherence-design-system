@@ -1,0 +1,19 @@
+{
+  "$comment": "Code<->Figma contract for the BRAND ramp (PEA-219 reorg). Brand is a mode-independent PRIMITIVE alias layer: code primitives.color.brand.N aliases primitives.color.blue.N, exactly as Figma's color/brand/N aliases color/blue/N inside the merged `primitives` collection (pre-merge home: the `brand colors` collection as brand-shades/N). No @theme utility is emitted — brand is a gated reference layer until a component actually needs it. check_primitive_drift.mjs asserts: code brand set == this snapshot (bijection), each code entry is literally an alias of blue.N, and the resolved hex matches. CI can't reach Figma live, so this snapshot is the committed bridge — refresh via use_figma per CONVENTIONS.md §8.",
+  "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+  "figmaCollection": "primitives",
+  "figmaGroup": "color/brand",
+  "brand": {
+    "50":  { "hex": "#EFF6FF", "figmaName": "color/brand/50",  "code": "primitives.color.brand.50",  "aliasOf": "blue.50" },
+    "100": { "hex": "#DBEAFE", "figmaName": "color/brand/100", "code": "primitives.color.brand.100", "aliasOf": "blue.100" },
+    "200": { "hex": "#BEDBFF", "figmaName": "color/brand/200", "code": "primitives.color.brand.200", "aliasOf": "blue.200" },
+    "300": { "hex": "#8EC5FF", "figmaName": "color/brand/300", "code": "primitives.color.brand.300", "aliasOf": "blue.300" },
+    "400": { "hex": "#51A2FF", "figmaName": "color/brand/400", "code": "primitives.color.brand.400", "aliasOf": "blue.400" },
+    "500": { "hex": "#2B7FFF", "figmaName": "color/brand/500", "code": "primitives.color.brand.500", "aliasOf": "blue.500" },
+    "600": { "hex": "#155DFC", "figmaName": "color/brand/600", "code": "primitives.color.brand.600", "aliasOf": "blue.600" },
+    "700": { "hex": "#1447E6", "figmaName": "color/brand/700", "code": "primitives.color.brand.700", "aliasOf": "blue.700" },
+    "800": { "hex": "#193CB8", "figmaName": "color/brand/800", "code": "primitives.color.brand.800", "aliasOf": "blue.800" },
+    "900": { "hex": "#1C398E", "figmaName": "color/brand/900", "code": "primitives.color.brand.900", "aliasOf": "blue.900" },
+    "950": { "hex": "#162456", "figmaName": "color/brand/950", "code": "primitives.color.brand.950", "aliasOf": "blue.950" }
+  }
+}

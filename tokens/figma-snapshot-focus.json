@@ -1,0 +1,10 @@
+{
+  "$comment": "Code<->Figma contract for FOCUS RINGS (PEA-219 reorg). Figma models focus as 3 local effect styles (DROP_SHADOW, 0 blur, 3px spread) whose color is BOUND to a semantic ring variable; code models the same thing as a ring utility (the kit idiom is ring-[3px] + a ring color token). The ring COLORS are already value-gated by check_design_token_drift.mjs via figma-snapshot.json — this snapshot adds the two bits that gate couldn't see: (1) WHICH variable each effect binds (it must be the figmaName of the matching gated code token — the sidebar + error effects were unbound/hardcoded until the PEA-219 reconcile), and (2) the 3px ring width. check_focus_drift.mjs asserts both, plus that ring-[3px] is actually the kit's focus idiom. Refresh via use_figma per CONVENTIONS.md §8.",
+  "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+  "spreadPx": 3,
+  "rings": {
+    "focus ring":         { "boundVariable": "ring/default", "codeToken": "ring-default" },
+    "focus ring sidebar": { "boundVariable": "sidebar/ring", "codeToken": "sidebar-ring" },
+    "focus ring error":   { "boundVariable": "ring/error",   "codeToken": "ring-error" }
+  }
+}

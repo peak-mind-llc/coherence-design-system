@@ -1,0 +1,333 @@
+{
+  "$comment": "Code<->Figma contract — full v2 semantic set. Resolved hex (light/dark) of the matching Figma 'color' collection variables (collection renamed from 'semantic' in the PEA-219 reorg), pulled via use_figma after the PEA-219 WS1 (unofficial retirement) + WS2 (on->foreground merge) execution. Flat status colors background/foreground × success/info/warning/error replaced the earlier -subtle/-emphasis success+warning pair (sourced from the updated Status Pill, node 1558:8809). border-subtle is the promoted unofficial/border-1 (renamed in place — the 259 Charts grid-line bindings survive). Drift-check Check C asserts dist/tokens.css matches these; Check D asserts the code<->snapshot name bijection. Refresh via use_figma per CONVENTIONS.md §8.",
+  "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+  "collection": "color",
+  "pulledAtCommit": "PEA-219 WS1+WS2 + parity-decisions + hardening + reorg — full 47-token v2 set (added foreground-icon for icon parity; promoted unofficial/border-1 to border-subtle for the Charts grid lines)",
+  "tokens": {
+    "background-default": {
+      "light": "#FFFFFF",
+      "dark": "#0A0A0A",
+      "figmaName": "background/default"
+    },
+    "foreground-default": {
+      "light": "#0A0A0A",
+      "dark": "#FAFAFA",
+      "figmaName": "foreground/default"
+    },
+    "background-primary": {
+      "light": "#171717",
+      "dark": "#E5E5E5",
+      "figmaName": "background/primary"
+    },
+    "foreground-default-inverse": {
+      "light": "#FAFAFA",
+      "dark": "#171717",
+      "figmaName": "foreground/default-inverse"
+    },
+    "background-default-inverse": {
+      "light": "#171717",
+      "dark": "#FAFAFA",
+      "figmaName": "background/default-inverse"
+    },
+    "background-secondary": {
+      "light": "#F5F5F5",
+      "dark": "#262626",
+      "figmaName": "background/secondary"
+    },
+    "background-muted": {
+      "light": "#F5F5F5",
+      "dark": "#262626",
+      "figmaName": "background/muted"
+    },
+    "foreground-muted": {
+      "light": "#737373",
+      "dark": "#A1A1A1",
+      "figmaName": "foreground/muted"
+    },
+    "foreground-icon": {
+      "light": "#737373",
+      "dark": "#A1A1A1",
+      "figmaName": "foreground/icon"
+    },
+    "foreground-primary": {
+      "figmaName": "foreground/primary",
+      "light": "#171717",
+      "dark": "#E5E5E5"
+    },
+    "background-accent": {
+      "light": "#F5F5F5",
+      "dark": "#262626",
+      "figmaName": "background/accent"
+    },
+    "background-destructive": {
+      "light": "#E7000B",
+      "dark": "#FF6467",
+      "figmaName": "background/destructive"
+    },
+    "border-default": {
+      "light": "#E5E5E5",
+      "dark": "#FFFFFF1A",
+      "figmaName": "border/default"
+    },
+    "input-border": {
+      "light": "#E5E5E5",
+      "dark": "#FFFFFF26",
+      "figmaName": "input/border"
+    },
+    "ring-default": {
+      "light": "#A1A1A1",
+      "dark": "#737373",
+      "figmaName": "ring/default"
+    },
+    "card-background": {
+      "light": "#FFFFFF",
+      "dark": "#171717",
+      "figmaName": "card/background"
+    },
+    "card-foreground": {
+      "light": "#0A0A0A",
+      "dark": "#FAFAFA",
+      "figmaName": "card/foreground"
+    },
+    "popover-background": {
+      "light": "#FFFFFF",
+      "dark": "#171717",
+      "figmaName": "popover/background"
+    },
+    "popover-foreground": {
+      "light": "#0A0A0A",
+      "dark": "#FAFAFA",
+      "figmaName": "popover/foreground"
+    },
+    "foreground-white": {
+      "light": "#FFFFFF",
+      "dark": "#FFFFFF",
+      "figmaName": "foreground/white"
+    },
+    "sidebar-background": {
+      "light": "#FAFAFA",
+      "dark": "#171717",
+      "figmaName": "sidebar/background"
+    },
+    "sidebar-foreground": {
+      "light": "#0A0A0A",
+      "dark": "#FAFAFA",
+      "figmaName": "sidebar/foreground"
+    },
+    "sidebar-primary": {
+      "light": "#171717",
+      "dark": "#1447E6",
+      "figmaName": "sidebar/primary"
+    },
+    "sidebar-on-primary": {
+      "light": "#FAFAFA",
+      "dark": "#FAFAFA",
+      "figmaName": "sidebar/on-primary"
+    },
+    "sidebar-accent": {
+      "light": "#F5F5F5",
+      "dark": "#262626",
+      "figmaName": "sidebar/accent"
+    },
+    "sidebar-on-accent": {
+      "light": "#171717",
+      "dark": "#FAFAFA",
+      "figmaName": "sidebar/on-accent"
+    },
+    "sidebar-border": {
+      "light": "#E5E5E5",
+      "dark": "#FFFFFF1A",
+      "figmaName": "sidebar/border"
+    },
+    "sidebar-ring": {
+      "light": "#A1A1A1",
+      "dark": "#737373",
+      "figmaName": "sidebar/ring"
+    },
+    "chart-1": {
+      "light": "#D4D4D4",
+      "dark": "#D4D4D4",
+      "figmaName": "chart/1"
+    },
+    "chart-2": {
+      "light": "#737373",
+      "dark": "#737373",
+      "figmaName": "chart/2"
+    },
+    "chart-3": {
+      "light": "#525252",
+      "dark": "#525252",
+      "figmaName": "chart/3"
+    },
+    "chart-4": {
+      "light": "#404040",
+      "dark": "#404040",
+      "figmaName": "chart/4"
+    },
+    "chart-5": {
+      "light": "#262626",
+      "dark": "#262626",
+      "figmaName": "chart/5"
+    },
+    "background-primary-hover": {
+      "light": "#262626",
+      "dark": "#D4D4D4",
+      "figmaName": "background/primary-hover"
+    },
+    "background-secondary-hover": {
+      "light": "#F5F5F5",
+      "dark": "#262626",
+      "figmaName": "background/secondary-hover"
+    },
+    "background-accent-subtle": {
+      "light": "#FAFAFA",
+      "dark": "#171717",
+      "figmaName": "background/accent-subtle"
+    },
+    "background-muted-subtle": {
+      "light": "#FAFAFA",
+      "dark": "#262626",
+      "figmaName": "background/muted-subtle"
+    },
+    "background-primary-subtle": {
+      "light": "#E5E5E5",
+      "dark": "#262626",
+      "figmaName": "background/primary-subtle"
+    },
+    "background-destructive-hover": {
+      "light": "#FB2C36",
+      "dark": "#FF6467",
+      "figmaName": "background/destructive-hover"
+    },
+    "background-destructive-subtle": {
+      "light": "#FFC9C9",
+      "dark": "#460809",
+      "figmaName": "background/destructive-subtle"
+    },
+    "ring-focus": {
+      "light": "#D4D4D4",
+      "dark": "#404040",
+      "figmaName": "ring/focus"
+    },
+    "ring-error": {
+      "light": "#FFC9C9",
+      "dark": "#82181A",
+      "figmaName": "ring/error"
+    },
+    "input-background": {
+      "light": "#FFFFFF00",
+      "dark": "#FFFFFF0D",
+      "figmaName": "input/background"
+    },
+    "background-overlay": {
+      "light": "#00000080",
+      "dark": "#00000080",
+      "figmaName": "background/overlay"
+    },
+    "input-background-hover": {
+      "light": "#F5F5F5",
+      "dark": "#FFFFFF1A",
+      "figmaName": "input/background-hover"
+    },
+    "foreground-destructive": {
+      "light": "#E7000B",
+      "dark": "#FF6467",
+      "figmaName": "foreground/destructive"
+    },
+    "background-success": {
+      "light": "#DCFCE7",
+      "dark": "#032E15",
+      "figmaName": "background/success"
+    },
+    "foreground-success": {
+      "light": "#008236",
+      "dark": "#05DF72",
+      "figmaName": "foreground/success"
+    },
+    "background-info": {
+      "light": "#DBEAFE",
+      "dark": "#162456",
+      "figmaName": "background/info"
+    },
+    "foreground-info": {
+      "light": "#1447E6",
+      "dark": "#51A2FF",
+      "figmaName": "foreground/info"
+    },
+    "background-warning": {
+      "light": "#FEF9C2",
+      "dark": "#432004",
+      "figmaName": "background/warning"
+    },
+    "foreground-warning": {
+      "light": "#A65F00",
+      "dark": "#FDC700",
+      "figmaName": "foreground/warning"
+    },
+    "background-error": {
+      "light": "#FFE2E2",
+      "dark": "#460809",
+      "figmaName": "background/error"
+    },
+    "foreground-error": {
+      "light": "#C10007",
+      "dark": "#FF6467",
+      "figmaName": "foreground/error"
+    },
+    "border-success-subtle": {
+      "light": "#DCFCE7",
+      "dark": "#032E15",
+      "figmaName": "border/success-subtle"
+    },
+    "border-success-emphasis": {
+      "light": "#008236",
+      "dark": "#05DF72",
+      "figmaName": "border/success-emphasis"
+    },
+    "border-info-subtle": {
+      "light": "#DBEAFE",
+      "dark": "#162456",
+      "figmaName": "border/info-subtle"
+    },
+    "border-info-emphasis": {
+      "light": "#1447E6",
+      "dark": "#51A2FF",
+      "figmaName": "border/info-emphasis"
+    },
+    "border-warning-subtle": {
+      "light": "#FEF9C2",
+      "dark": "#432004",
+      "figmaName": "border/warning-subtle"
+    },
+    "border-warning-emphasis": {
+      "light": "#A65F00",
+      "dark": "#FDC700",
+      "figmaName": "border/warning-emphasis"
+    },
+    "border-error-subtle": {
+      "light": "#FFE2E2",
+      "dark": "#460809",
+      "figmaName": "border/error-subtle"
+    },
+    "border-error-emphasis": {
+      "light": "#C10007",
+      "dark": "#FF6467",
+      "figmaName": "border/error-emphasis"
+    },
+    "border-destructive": {
+      "light": "#E7000B",
+      "dark": "#FF6467",
+      "figmaName": "border/destructive"
+    },
+    "border-primary": {
+      "light": "#171717",
+      "dark": "#E5E5E5",
+      "figmaName": "border/primary"
+    },
+    "border-subtle": {
+      "light": "#F5F5F5",
+      "dark": "#171717",
+      "figmaName": "border/subtle"
+    }
+  }
+}

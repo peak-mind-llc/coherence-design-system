@@ -1,0 +1,27 @@
+{
+  "$comment": "Code<->Figma contract for SPACING (PEA-219 hardening). Code uses Tailwind v4's default 4px-base spacing scale (--spacing: 0.25rem; gap-N / p-N / m-N / etc. = N × 0.25rem = N × 4px), with NO project override — tailwind.config.js intentionally removed the spacing override (see its comment). Figma's 'spacing' collection mirrors a curated subset of that scale as gap-N variables; a comma marks a half-step because Figma bans '.' in variable names (gap-1,5 ↔ code gap-1.5). check_spacing_drift.mjs asserts every captured Figma rung sits exactly on the 4px grid (px == N × 4) — i.e. Figma spacing == the code Tailwind scale, by construction. Tailwind generates any N on demand, so which rungs Figma exposes is a curated set, not exhaustive; this snapshot documents the captured set. Refresh via use_figma per CONVENTIONS.md §8.",
+  "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+  "figmaCollection": "spacing",
+  "tailwindBasePx": 4,
+  "spacing": {
+    "gap-0,5": 2,
+    "gap-1": 4,
+    "gap-1,5": 6,
+    "gap-2": 8,
+    "gap-2,5": 10,
+    "gap-3": 12,
+    "gap-3,5": 14,
+    "gap-4": 16,
+    "gap-5": 20,
+    "gap-6": 24,
+    "gap-8": 32,
+    "gap-10": 40,
+    "gap-12": 48,
+    "gap-16": 64,
+    "gap-20": 80,
+    "gap-24": 96,
+    "gap-28": 112,
+    "gap-32": 128,
+    "gap-36": 144
+  }
+}

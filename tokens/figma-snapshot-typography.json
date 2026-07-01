@@ -1,0 +1,15 @@
+{
+  "$comment": "Code<->Figma contract for TYPOGRAPHY (PEA-219). The 8 composite --text-* tokens in the design-system @theme (dist/tokens.css) carry font-size + line-height [+ letter-spacing/font-weight for headings], 1:1 with the Figma 'typography' text styles (renamed to the variant names: heading-1..4, body-lg/body/body-sm/body-xs). check_typography_drift.mjs asserts each token's px/em/weight equals the resolved @theme value + figmaStyle name bijection. The <Text variant> component (packages/cw-design-system-ts/src/components/ui/text.tsx) exposes these as a closed typed set via cva. Body styles have /regular,/medium,/bold weight variants in Figma -> the <Text> weight prop (font-normal/medium/semibold); the size/LH token is shared, so this snapshot keys by the size stem. Heading letter-spacing is em (rounded 3dp; ~Figma's -1.5/-1/-1px at 48/30/24px). caption + monospaced were retired in Figma (rebound to body-sm / body) — the typography set is now exactly the 16 styles (4 headings + 12 body = these 8 size tokens × regular/medium/bold). Refresh via use_figma per CONVENTIONS.md §8.",
+  "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+  "figmaCollection": "typography",
+  "typography": {
+    "heading-1": { "figmaStyle": "heading-1", "code": "text-heading-1", "sizePx": 48, "lineHeightPx": 48, "letterSpacingEm": -0.031, "fontWeight": 600 },
+    "heading-2": { "figmaStyle": "heading-2", "code": "text-heading-2", "sizePx": 30, "lineHeightPx": 30, "letterSpacingEm": -0.033, "fontWeight": 600 },
+    "heading-3": { "figmaStyle": "heading-3", "code": "text-heading-3", "sizePx": 24, "lineHeightPx": 28.8, "letterSpacingEm": -0.042, "fontWeight": 600 },
+    "heading-4": { "figmaStyle": "heading-4", "code": "text-heading-4", "sizePx": 20, "lineHeightPx": 24, "fontWeight": 600 },
+    "body-lg": { "figmaStyle": "body-lg", "code": "text-body-lg", "sizePx": 18, "lineHeightPx": 27 },
+    "body": { "figmaStyle": "body", "code": "text-body", "sizePx": 16, "lineHeightPx": 24 },
+    "body-sm": { "figmaStyle": "body-sm", "code": "text-body-sm", "sizePx": 14, "lineHeightPx": 20 },
+    "body-xs": { "figmaStyle": "body-xs", "code": "text-body-xs", "sizePx": 12, "lineHeightPx": 16 }
+  }
+}

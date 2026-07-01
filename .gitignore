@@ -1,0 +1,7 @@
+# Override the root .gitignore which excludes dist/ globally (intended for
+# Python build artifacts). This package's dist/ holds Style-Dictionary-compiled
+# tokens (tokens.css, tokens.ts, tokens.d.ts) that consumers (desktop/, future
+# recorder) import directly. They must be committed so consumers don't need
+# to run the build themselves.
+!dist/
+!dist/**

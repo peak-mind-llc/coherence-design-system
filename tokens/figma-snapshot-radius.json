@@ -1,0 +1,19 @@
+{
+  "$comment": "Code<->Figma contract for RADIUS. Reconciled to the PEA-126 'Path C' 12-rung scale in the dev-conner merge (was the old calc()-multiplier ladder; the Figma 'radius' collection was migrated value-preservingly to match — see docs/design-system/radius-handoff.md). Source of truth is the design-system @theme block (dist/tokens.css → --radius-{name}: var(--radius-{px}), which Tailwind v4 turns into rounded-{name} utilities). Figma's 'radius' collection mirrors it 1:1: value-named primitives (radius-0..radius-9999) aliased by extended-t-shirt semantics. check_radius_drift.mjs asserts each Figma rung's px equals the code @theme value (rem->px @16). Unlike the old ladder, ALL 12 rungs (including radius-none and radius-round) are @theme entries resolving through a primitive — no stock-Tailwind exceptions. CI can't reach Figma live, so this snapshot is the committed bridge — refresh it (use_figma) together with any intentional ladder change. See CONVENTIONS.md §8.",
+  "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+  "figmaCollection": "radius",
+  "radii": {
+    "none":  { "px": 0,    "figmaName": "radius-none",  "code": "rounded-none" },
+    "2xs":   { "px": 2,    "figmaName": "radius-2xs",   "code": "rounded-2xs" },
+    "xs":    { "px": 4,    "figmaName": "radius-xs",    "code": "rounded-xs" },
+    "sm":    { "px": 6,    "figmaName": "radius-sm",    "code": "rounded-sm" },
+    "md":    { "px": 8,    "figmaName": "radius-md",    "code": "rounded-md" },
+    "lg":    { "px": 10,   "figmaName": "radius-lg",    "code": "rounded-lg" },
+    "xl":    { "px": 12,   "figmaName": "radius-xl",    "code": "rounded-xl" },
+    "2xl":   { "px": 14,   "figmaName": "radius-2xl",   "code": "rounded-2xl" },
+    "3xl":   { "px": 16,   "figmaName": "radius-3xl",   "code": "rounded-3xl" },
+    "4xl":   { "px": 20,   "figmaName": "radius-4xl",   "code": "rounded-4xl" },
+    "5xl":   { "px": 24,   "figmaName": "radius-5xl",   "code": "rounded-5xl" },
+    "round": { "px": 9999, "figmaName": "radius-round", "code": "rounded-round" }
+  }
+}

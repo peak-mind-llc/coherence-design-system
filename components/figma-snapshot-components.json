@@ -1,0 +1,2425 @@
+{
+ "$comment": "Code<->Figma contract for COMPONENTS (PEA-219 agent enablement). One entry per public COMPONENT_SET / standalone COMPONENT in the CWS kit, componentPropertyDefinitions verbatim (property keys with the '#id' suffix stripped). Excluded by class rule: the Icon / * library (~1,600 lucide icons — instances map to lucide-react PascalCase imports) and '.'-prefixed private components. This is the FIGMA side of components/map.json; check_component_map_drift.mjs Checks B/C compare the two. CI can't reach Figma live — refresh via the use_figma per-page sweep recipe in CONVENTIONS.md §9 whenever kit components change.",
+ "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+ "componentSets": {
+  "Accordion Content": {
+   "nodeId": "66:5041",
+   "page": "Accordion",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Accordion Content (Bordered)": {
+   "nodeId": "1779:724",
+   "page": "Accordion",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Accordion Trigger": {
+   "nodeId": "66:5034",
+   "page": "Accordion",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Accordion label": {
+     "type": "TEXT",
+     "default": "Label"
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Closed",
+     "values": [
+      "Closed",
+      "Open",
+      "Focus"
+     ]
+    }
+   }
+  },
+  "Accordion Trigger (Bordered)": {
+   "nodeId": "1779:595",
+   "page": "Accordion",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Accordion label": {
+     "type": "TEXT",
+     "default": "Label"
+    },
+    "Show border": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Closed",
+     "values": [
+      "Closed",
+      "Open",
+      "Focus"
+     ]
+    },
+    "Position": {
+     "type": "VARIANT",
+     "default": "Single",
+     "values": [
+      "First",
+      "Middle",
+      "Last",
+      "Single"
+     ]
+    }
+   }
+  },
+  "Alert": {
+   "nodeId": "58:5416",
+   "page": "Alert",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show Line 2": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show Icon": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "Show Button": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "⮑ Icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Line 1": {
+     "type": "TEXT",
+     "default": "Line 1"
+    },
+    "⮑  Line 2": {
+     "type": "TEXT",
+     "default": "Line 2"
+    },
+    "Type": {
+     "type": "VARIANT",
+     "default": "Neutral",
+     "values": [
+      "Neutral",
+      "Error",
+      "Success",
+      "Info",
+      "Warning"
+     ]
+    },
+    "Flip Icon": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    }
+   }
+  },
+  "Alert Dialog": {
+   "nodeId": "139:11941",
+   "page": "Alert Dialog",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Mobile",
+     "values": [
+      "Desktop",
+      "Mobile"
+     ]
+    }
+   }
+  },
+  "Area chart": {
+   "nodeId": "1509:1324",
+   "page": "Charts",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Interactive",
+     "values": [
+      "Interactive",
+      "Linear",
+      "Default",
+      "Step",
+      "Stacked"
+     ]
+    }
+   }
+  },
+  "Avatar": {
+   "nodeId": "18:1398",
+   "page": "Avatar",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Picture": {
+     "type": "VARIANT",
+     "default": "Off",
+     "values": [
+      "On",
+      "Off"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Regular",
+     "values": [
+      "Small",
+      "Regular",
+      "Tiny",
+      "Extra Tiny"
+     ]
+    },
+    "Roundness Type": {
+     "type": "VARIANT",
+     "default": "Round",
+     "values": [
+      "Roundrect",
+      "Round"
+     ]
+    }
+   }
+  },
+  "Avatar Stack": {
+   "nodeId": "22:9509",
+   "page": "Avatar",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show 4th": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show 5th": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show 3th": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Small",
+     "values": [
+      "Regular",
+      "Small"
+     ]
+    },
+    "Type": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default"
+     ]
+    }
+   }
+  },
+  "Badge": {
+   "nodeId": "19:6979",
+   "page": "Badge",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "⮑ Icon left": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Show left icon": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show right icon": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "⮑ Icon right": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Label": {
+     "type": "TEXT",
+     "default": "Label"
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    },
+    "Variant": {
+     "type": "VARIANT",
+     "default": "Primary",
+     "values": [
+      "Primary",
+      "Secondary",
+      "Outline",
+      "Ghost",
+      "Destructive"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Focus"
+     ]
+    }
+   }
+  },
+  "Bar chart": {
+   "nodeId": "1509:1849",
+   "page": "Charts",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Interactive",
+     "values": [
+      "Interactive",
+      "Default",
+      "Horizontal",
+      "Multiple",
+      "Stacked"
+     ]
+    }
+   }
+  },
+  "Basic Table Cell": {
+   "nodeId": "288:172242",
+   "page": "Table",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Parity": {
+     "type": "VARIANT",
+     "default": "Odd",
+     "values": [
+      "Odd",
+      "Even"
+     ]
+    },
+    "Alignment": {
+     "type": "VARIANT",
+     "default": "Left",
+     "values": [
+      "Right",
+      "Left"
+     ]
+    }
+   }
+  },
+  "Basic Table Header": {
+   "nodeId": "164:18430",
+   "page": "Table",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Cell Type": {
+     "type": "VARIANT",
+     "default": "Heading",
+     "values": [
+      "Heading"
+     ]
+    }
+   }
+  },
+  "Breadcrumb": {
+   "nodeId": "1362:217",
+   "page": "Breadcrumb",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Items": {
+     "type": "VARIANT",
+     "default": "2",
+     "values": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ]
+    }
+   }
+  },
+  "Button": {
+   "nodeId": "9:1071",
+   "page": "Button",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show right icon": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "⮑ Right icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "⮑ Left icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Show left icon": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Variant": {
+     "type": "VARIANT",
+     "default": "Primary",
+     "values": [
+      "Primary",
+      "Secondary",
+      "Outline",
+      "Ghost",
+      "Destructive"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Small",
+      "Mini",
+      "Large",
+      "Extra Large"
+     ]
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Hover & Active",
+      "Focus",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Button Group": {
+   "nodeId": "784:82792",
+   "page": "Button Group",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Skin": {
+     "type": "VARIANT",
+     "default": "Outlined",
+     "values": [
+      "Outlined",
+      "Ghost"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small"
+     ]
+    },
+    "Position": {
+     "type": "VARIANT",
+     "default": "Left",
+     "values": [
+      "Left",
+      "Middle",
+      "Right",
+      "Single"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Focus",
+      "Hover",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Button Group Icon Button": {
+   "nodeId": "784:87178",
+   "page": "Button Group",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Skin": {
+     "type": "VARIANT",
+     "default": "Outlined",
+     "values": [
+      "Ghost",
+      "Outlined"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small"
+     ]
+    },
+    "Position": {
+     "type": "VARIANT",
+     "default": "Left",
+     "values": [
+      "Left",
+      "Middle",
+      "Right",
+      "Single"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Focus",
+      "Disabled",
+      "Hover"
+     ]
+    }
+   }
+  },
+  "Calendar": {
+   "nodeId": "288:119954",
+   "page": "Date Picker & Calendar",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Months": {
+     "type": "VARIANT",
+     "default": "1 Month",
+     "values": [
+      "1 Month",
+      "2 months",
+      "3 months"
+     ]
+    }
+   }
+  },
+  "Card": {
+   "nodeId": "179:29234",
+   "page": "Card",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Main Slot": {
+     "type": "INSTANCE_SWAP",
+     "default": "151:12276"
+    },
+    "Header Slot": {
+     "type": "INSTANCE_SWAP",
+     "default": "151:12276"
+    },
+    "Footer Slot": {
+     "type": "INSTANCE_SWAP",
+     "default": "151:12276"
+    },
+    "Slot No.": {
+     "type": "VARIANT",
+     "default": "1 Slot",
+     "values": [
+      "1 Slot",
+      "2 Slots",
+      "3 Slots"
+     ]
+    }
+   }
+  },
+  "Carousel": {
+   "nodeId": "164:18293",
+   "page": "Carousel",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Slides": {
+     "type": "VARIANT",
+     "default": "1 Slide",
+     "values": [
+      "1 Slide",
+      "2 Slides",
+      "3 Slides"
+     ]
+    }
+   }
+  },
+  "Carousel with Image": {
+   "nodeId": "164:18350",
+   "page": "Carousel",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "2 Slides",
+     "values": [
+      "3 Slides",
+      "2 Slides",
+      "1 Slide"
+     ]
+    }
+   }
+  },
+  "Chart": {
+   "nodeId": "1507:6935",
+   "page": "Charts",
+   "type": "COMPONENT",
+   "properties": {
+    "Show Y-axis": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "Show X-axis": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "Show legend": {
+     "type": "BOOLEAN",
+     "default": true
+    }
+   }
+  },
+  "Checkbox": {
+   "nodeId": "16:1790",
+   "page": "Checkbox",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Checked?": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True",
+      "Indeterminate"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Focus",
+      "Error",
+      "Error Focus",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Checkbox Group": {
+   "nodeId": "19:6040",
+   "page": "Checkbox",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Layout": {
+     "type": "VARIANT",
+     "default": "Inline",
+     "values": [
+      "Inline",
+      "Block"
+     ]
+    },
+    "Checked?": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    }
+   }
+  },
+  "Command": {
+   "nodeId": "66:5046",
+   "page": "Command",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Command Item": {
+   "nodeId": "66:5600",
+   "page": "Command",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show line 2": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "⮑ Line 2": {
+     "type": "TEXT",
+     "default": "Line 2"
+    },
+    "Line 1": {
+     "type": "TEXT",
+     "default": "Line 1"
+    },
+    "Show icon": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "⮑ Icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:203"
+    },
+    "Show right decoration": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Regular",
+     "values": [
+      "Regular",
+      "Hover",
+      "Active",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Date Picker": {
+   "nodeId": "60:9340",
+   "page": "Date Picker & Calendar",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "State": {
+     "type": "VARIANT",
+     "default": "Placeholder",
+     "values": [
+      "Placeholder",
+      "Value",
+      "Focus"
+     ]
+    }
+   }
+  },
+  "Dialog": {
+   "nodeId": "151:12298",
+   "page": "Dialog",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Desktop",
+     "values": [
+      "Desktop",
+      "Desktop Scrollable",
+      "Mobile",
+      "Mobile Full Screen Scrollable"
+     ]
+    }
+   }
+  },
+  "Dialog Footer": {
+   "nodeId": "176:21284",
+   "page": "Dialog",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "2 Buttons Right",
+     "values": [
+      "2 Buttons Right",
+      "2 Full-width Buttons",
+      "Single Full-width Button"
+     ]
+    }
+   }
+  },
+  "Dialog Header": {
+   "nodeId": "176:22344",
+   "page": "Dialog",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Header",
+     "values": [
+      "Header",
+      "Close Only",
+      "Icon Button Close"
+     ]
+    }
+   }
+  },
+  "Drawer": {
+   "nodeId": "151:12313",
+   "page": "Drawer",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Empty": {
+   "nodeId": "989:27679",
+   "page": "Empty",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Description": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "Title": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "Show buttons": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "Show link": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "emptyMedia: avatarStack": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "emptyMedia: avatar": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "emptyMedia: iconBadge": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "⮑ title": {
+     "type": "TEXT",
+     "default": "Title"
+    },
+    "⮑ description": {
+     "type": "TEXT",
+     "default": "Description"
+    },
+    "Variant": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Outline",
+      "Background",
+      "Outline dashed"
+     ]
+    }
+   }
+  },
+  "Horizontal Field": {
+   "nodeId": "120:13775",
+   "page": "Field",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Text Value",
+     "values": [
+      "Select",
+      "Text Value",
+      "Radio",
+      "Textarea",
+      "Checkbox",
+      "Slider"
+     ]
+    }
+   }
+  },
+  "Hover Card": {
+   "nodeId": "303:246487",
+   "page": "Hover Card",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Icon Badge": {
+   "nodeId": "989:27076",
+   "page": "Item",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Icon Button": {
+   "nodeId": "9:775",
+   "page": "Icon Button",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    },
+    "Variant": {
+     "type": "VARIANT",
+     "default": "Primary",
+     "values": [
+      "Primary",
+      "Secondary",
+      "Outline",
+      "Ghost",
+      "Destructive"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small",
+      "Mini"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Hover & Active",
+      "Focus",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Input": {
+   "nodeId": "16:1738",
+   "page": "Input & Input Group",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show decoration left": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show decoration right": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show cursor": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Value": {
+     "type": "TEXT",
+     "default": "Value"
+    },
+    "Show prepend text": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show append text": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Regular",
+     "values": [
+      "Regular",
+      "Large",
+      "Small",
+      "Mini"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Empty",
+     "values": [
+      "Empty",
+      "Placeholder",
+      "Value",
+      "Focus",
+      "Error",
+      "Error Focus",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Input File": {
+   "nodeId": "66:5981",
+   "page": "Input File",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Focus",
+      "Error",
+      "Error Focus"
+     ]
+    },
+    "File Chosen": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "True",
+      "False"
+     ]
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small",
+      "Mini"
+     ]
+    }
+   }
+  },
+  "Input OTP": {
+   "nodeId": "140:11468",
+   "page": "Input OTP",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "State": {
+     "type": "VARIANT",
+     "default": "Empty",
+     "values": [
+      "Empty",
+      "Placeholder",
+      "Value",
+      "Focus",
+      "Error",
+      "Error Focus",
+      "Disabled"
+     ]
+    },
+    "Position": {
+     "type": "VARIANT",
+     "default": "Left",
+     "values": [
+      "Left",
+      "Middle",
+      "Right"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small",
+      "Mini"
+     ]
+    }
+   }
+  },
+  "Item": {
+   "nodeId": "920:4754",
+   "page": "Item",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Title": {
+     "type": "TEXT",
+     "default": "Title"
+    },
+    "Description": {
+     "type": "TEXT",
+     "default": "Description"
+    },
+    "itemAction: icon": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "itemAction: button": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "itemAction: iconButton": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "itemMedia: avatar": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "itemMedia: icon": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "itemMedia: avatarStack": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "itemMedia: image": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Label": {
+     "type": "TEXT",
+     "default": "label"
+    },
+    "itemAction: label": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "itemMedia: iconBadge": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Variant": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Outline",
+      "Muted"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Small"
+     ]
+    },
+    "asChild": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Hover"
+     ]
+    }
+   }
+  },
+  "Kbd": {
+   "nodeId": "780:42511",
+   "page": "Kbd",
+   "type": "COMPONENT",
+   "properties": {
+    "key": {
+     "type": "TEXT",
+     "default": "K"
+    }
+   }
+  },
+  "Kbd Combo": {
+   "nodeId": "780:43835",
+   "page": "Kbd",
+   "type": "COMPONENT",
+   "properties": {
+    "kbd item 3": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "kbd item 2": {
+     "type": "BOOLEAN",
+     "default": true
+    }
+   }
+  },
+  "Label": {
+   "nodeId": "103:9453",
+   "page": "Label",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Layout": {
+     "type": "VARIANT",
+     "default": "Block",
+     "values": [
+      "Inline",
+      "Block"
+     ]
+    }
+   }
+  },
+  "Legend": {
+   "nodeId": "1509:2165",
+   "page": "Charts",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Line chart": {
+   "nodeId": "1509:818",
+   "page": "Charts",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Interactive",
+     "values": [
+      "Default",
+      "Interactive",
+      "Linear",
+      "Multiple",
+      "Step"
+     ]
+    }
+   }
+  },
+  "Link Button": {
+   "nodeId": "11:2014",
+   "page": "Link Button",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "⮑ Icon left": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Show icon left": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Label": {
+     "type": "TEXT",
+     "default": "Label"
+    },
+    "⮑ Icon right": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Show icon right": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Hover & Active",
+      "Focus"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small",
+      "Mini"
+     ]
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    }
+   }
+  },
+  "Loading Button": {
+   "nodeId": "11:1126",
+   "page": "Loading Button",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Label": {
+     "type": "TEXT",
+     "default": "Label"
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small",
+      "Mini"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Hover & Active",
+      "Focus"
+     ]
+    }
+   }
+  },
+  "Menu": {
+   "nodeId": "176:27848",
+   "page": "Select & Combobox",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Component": {
+     "type": "INSTANCE_SWAP",
+     "default": "151:12276"
+    },
+    "Content": {
+     "type": "SLOT"
+    },
+    "Spacing": {
+     "type": "VARIANT",
+     "default": "2px",
+     "values": [
+      "2px",
+      "8px"
+     ]
+    }
+   }
+  },
+  "Menu Item": {
+   "nodeId": "18:1010",
+   "page": "Select & Combobox",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show left decoration": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show right decoration": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show line 2": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Regular",
+     "values": [
+      "Regular",
+      "Large"
+     ]
+    },
+    "Type": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Destructive"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Hover",
+      "Focus",
+      "Active",
+      "Selected",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Navigation Menu": {
+   "nodeId": "294:233298",
+   "page": "Navigation Menu",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Pagination": {
+   "nodeId": "133:11358",
+   "page": "Pagination",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Previous",
+     "values": [
+      "Next",
+      "Previous"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Regular",
+     "values": [
+      "Regular",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Pagination Button": {
+   "nodeId": "133:12195",
+   "page": "Pagination",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Active": {
+     "type": "VARIANT",
+     "default": "On",
+     "values": [
+      "On",
+      "Off"
+     ]
+    }
+   }
+  },
+  "Pagination Ellipsis": {
+   "nodeId": "133:11355",
+   "page": "Pagination",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Progress": {
+   "nodeId": "438:64981",
+   "page": "Progress",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Progress": {
+     "type": "VARIANT",
+     "default": "0",
+     "values": [
+      "0",
+      "10",
+      "25",
+      "33",
+      "50",
+      "66",
+      "75",
+      "90",
+      "100"
+     ]
+    }
+   }
+  },
+  "Radio": {
+   "nodeId": "16:1796",
+   "page": "Radio",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Checked?": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Focus",
+      "Error",
+      "Error Focus",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Radio Group": {
+   "nodeId": "19:6048",
+   "page": "Radio",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Checked?": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    },
+    "Layout": {
+     "type": "VARIANT",
+     "default": "Inline",
+     "values": [
+      "Block",
+      "Inline"
+     ]
+    }
+   }
+  },
+  "Resizable": {
+   "nodeId": "222:27733",
+   "page": "Resizable",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Orientation": {
+     "type": "VARIANT",
+     "default": "Vertical",
+     "values": [
+      "Horizontal",
+      "Vertical"
+     ]
+    }
+   }
+  },
+  "Rich Checkbox Group": {
+   "nodeId": "19:6351",
+   "page": "Checkbox",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show Line 2": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Line 1": {
+     "type": "TEXT",
+     "default": "Label"
+    },
+    "⮑ Line 2": {
+     "type": "TEXT",
+     "default": "Secondary text"
+    },
+    "Checked": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    },
+    "Flipped": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    }
+   }
+  },
+  "Rich Radio Group": {
+   "nodeId": "19:5987",
+   "page": "Radio",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show Line 2": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "Line 1": {
+     "type": "TEXT",
+     "default": "Line 1"
+    },
+    "⮑ Line 2": {
+     "type": "TEXT",
+     "default": "Line 2"
+    },
+    "Checked": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    },
+    "Flipped": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    }
+   }
+  },
+  "Rich Switch Group": {
+   "nodeId": "19:6374",
+   "page": "Switch",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show Line 2": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Checked?": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    },
+    "Flipped": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    }
+   }
+  },
+  "Scrollbar": {
+   "nodeId": "164:18669",
+   "page": "Scroll Area",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Vertical",
+     "values": [
+      "Vertical",
+      "Horizontal"
+     ]
+    }
+   }
+  },
+  "Select & Combobox": {
+   "nodeId": "16:1732",
+   "page": "Select & Combobox",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show Decoration": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show Prepend": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small",
+      "Mini"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Placeholder",
+     "values": [
+      "Placeholder",
+      "Default",
+      "Focus",
+      "Error",
+      "Disabled"
+     ]
+    },
+    "Lines": {
+     "type": "VARIANT",
+     "default": "1 Line",
+     "values": [
+      "1 Line",
+      "2 Lines"
+     ]
+    }
+   }
+  },
+  "Select Menu Group Label": {
+   "nodeId": "80:10189",
+   "page": "Select & Combobox",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Small",
+     "values": [
+      "Small",
+      "Regular"
+     ]
+    },
+    "Indented?": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    }
+   }
+  },
+  "Select Menu Overflow": {
+   "nodeId": "28:6842",
+   "page": "Select & Combobox",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Scroll Direction": {
+     "type": "VARIANT",
+     "default": "Scroll Up",
+     "values": [
+      "Scroll Down",
+      "Scroll Up"
+     ]
+    }
+   }
+  },
+  "Separator": {
+   "nodeId": "176:26202",
+   "page": "Separator",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Spacing": {
+     "type": "VARIANT",
+     "default": "None",
+     "values": [
+      "Regular",
+      "None",
+      "Spacious"
+     ]
+    },
+    "Direction": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Vertical"
+     ]
+    }
+   }
+  },
+  "Sheet": {
+   "nodeId": "301:243831",
+   "page": "Sheet",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Scrollable": {
+     "type": "VARIANT",
+     "default": "True",
+     "values": [
+      "False",
+      "True"
+     ]
+    }
+   }
+  },
+  "Sidebar Badge": {
+   "nodeId": "848:48013",
+   "page": "Sidebar",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Sidebar Group Label": {
+   "nodeId": "176:23790",
+   "page": "Sidebar",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Base",
+     "values": [
+      "Base",
+      "Action",
+      "Expanded",
+      "Collapsed"
+     ]
+    }
+   }
+  },
+  "Sidebar Item / Collapsed": {
+   "nodeId": "28:5228",
+   "page": "Sidebar",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Regular",
+     "values": [
+      "Regular",
+      "Active"
+     ]
+    }
+   }
+  },
+  "Sidebar Item / Expanded / 1st Level": {
+   "nodeId": "27:3414",
+   "page": "Sidebar",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Active",
+      "Default",
+      "Focus",
+      "Active Focus"
+     ]
+    },
+    "Type": {
+     "type": "VARIANT",
+     "default": "Base",
+     "values": [
+      "Base",
+      "Expanded",
+      "Collapsed",
+      "Dropdown",
+      "Badge"
+     ]
+    }
+   }
+  },
+  "Sidebar Item / Expanded / 2nd Level": {
+   "nodeId": "28:5147",
+   "page": "Sidebar",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Active"
+     ]
+    }
+   }
+  },
+  "Skeleton": {
+   "nodeId": "303:246698",
+   "page": "Skeleton",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Skeleton / Placeholder Avatar": {
+   "nodeId": "222:27480",
+   "page": "Skeleton",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Skeleton / Placeholder Line": {
+   "nodeId": "222:27481",
+   "page": "Skeleton",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Skeleton / Placeholder Object": {
+   "nodeId": "222:27487",
+   "page": "Skeleton",
+   "type": "COMPONENT",
+   "properties": {}
+  },
+  "Slider Horizontal": {
+   "nodeId": "65:4902",
+   "page": "Slider",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Range narrow",
+      "Range wide"
+     ]
+    }
+   }
+  },
+  "Slider Vertical": {
+   "nodeId": "162:17939",
+   "page": "Slider",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Range narrow",
+      "Range wide"
+     ]
+    }
+   }
+  },
+  "Sonner": {
+   "nodeId": "139:11361",
+   "page": "Sonner",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Stack": {
+     "type": "VARIANT",
+     "default": "1 Level",
+     "values": [
+      "1 Level",
+      "2 Levels",
+      "3 Levels"
+     ]
+    }
+   }
+  },
+  "Sonner Content": {
+   "nodeId": "139:11366",
+   "page": "Sonner",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Show icon": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "Type": {
+     "type": "VARIANT",
+     "default": "Loading",
+     "values": [
+      "Line and button",
+      "Simple",
+      "Lines and button",
+      "Loading"
+     ]
+    }
+   }
+  },
+  "Spinner": {
+   "nodeId": "757:154511",
+   "page": "Spinner",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Mirrored"
+     ]
+    }
+   }
+  },
+  "Status dot": {
+   "nodeId": "4620:42",
+   "page": "Starus Dot",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Status": {
+     "type": "VARIANT",
+     "default": "Success",
+     "values": [
+      "Success",
+      "Info",
+      "Warning",
+      "Error"
+     ]
+    }
+   }
+  },
+  "Status pill": {
+   "nodeId": "4620:33",
+   "page": "Status Pill",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Status": {
+     "type": "VARIANT",
+     "default": "Success",
+     "values": [
+      "Success",
+      "Info",
+      "Warning",
+      "Error"
+     ]
+    },
+    "Strength": {
+     "type": "VARIANT",
+     "default": "Subtle",
+     "values": [
+      "Subtle",
+      "Strong"
+     ]
+    },
+    "Show dismiss": {
+     "type": "BOOLEAN",
+     "default": false
+    }
+   }
+  },
+  "Switch": {
+   "nodeId": "16:1801",
+   "page": "Switch",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Checked?": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Focus",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Switch Group": {
+   "nodeId": "19:6406",
+   "page": "Switch",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Layout": {
+     "type": "VARIANT",
+     "default": "Inline",
+     "values": [
+      "Inline",
+      "Block"
+     ]
+    },
+    "Checked?": {
+     "type": "VARIANT",
+     "default": "False",
+     "values": [
+      "False",
+      "True"
+     ]
+    }
+   }
+  },
+  "Tab": {
+   "nodeId": "9:634",
+   "page": "Tabs",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show counter": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Regular",
+     "values": [
+      "Regular",
+      "Large",
+      "Small"
+     ]
+    },
+    "Content": {
+     "type": "VARIANT",
+     "default": "Label",
+     "values": [
+      "Label",
+      "Icon",
+      "Icon + Label"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Inactive",
+     "values": [
+      "Inactive",
+      "Inactive Hover",
+      "Inactive Focus",
+      "Active",
+      "Active Focus",
+      "Disabled"
+     ]
+    }
+   }
+  },
+  "Table Cell": {
+   "nodeId": "19:6314",
+   "page": "Data Table",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show border": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show icon 2": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show icon 3": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show button 2": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show button 3": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show badge 2": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Show badge 3": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Content": {
+     "type": "VARIANT",
+     "default": "Text (1 Line)",
+     "values": [
+      "Text (1 Line)",
+      "Text (2 Lines)",
+      "Actions",
+      "Checkbox",
+      "Badge",
+      "Buttons",
+      "Avatar",
+      "Avatar + Name",
+      "Input"
+     ]
+    },
+    "Alignment": {
+     "type": "VARIANT",
+     "default": "Left",
+     "values": [
+      "Left",
+      "Right"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Hover",
+      "Active",
+      "Selected"
+     ]
+    }
+   }
+  },
+  "Table Header": {
+   "nodeId": "19:6472",
+   "page": "Data Table",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show border": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Content": {
+     "type": "VARIANT",
+     "default": "Text",
+     "values": [
+      "Text",
+      "Sortable",
+      "Checkbox",
+      "Empty"
+     ]
+    },
+    "Alignment": {
+     "type": "VARIANT",
+     "default": "Left",
+     "values": [
+      "Left",
+      "Right"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Hover",
+      "Active",
+      "Selected"
+     ]
+    }
+   }
+  },
+  "Tabs": {
+   "nodeId": "9:639",
+   "page": "Tabs",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Size": {
+     "type": "VARIANT",
+     "default": "Regular",
+     "values": [
+      "Regular",
+      "Large",
+      "Small"
+     ]
+    },
+    "Content": {
+     "type": "VARIANT",
+     "default": "Label",
+     "values": [
+      "Label",
+      "Icon",
+      "Icon + Label"
+     ]
+    },
+    "Parts": {
+     "type": "VARIANT",
+     "default": "2 Parts",
+     "values": [
+      "2 Parts",
+      "3 Parts",
+      "4 Parts",
+      "5 Parts"
+     ]
+    }
+   }
+  },
+  "Textarea": {
+   "nodeId": "16:1745",
+   "page": "Textarea",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Show resizable": {
+     "type": "BOOLEAN",
+     "default": true
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Empty",
+     "values": [
+      "Empty",
+      "Placeholder",
+      "Value",
+      "Focus",
+      "Error",
+      "Error Focus",
+      "Disabled"
+     ]
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    }
+   }
+  },
+  "Toggle Button": {
+   "nodeId": "816:112827",
+   "page": "Toggle & Toggle Group",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Label": {
+     "type": "TEXT",
+     "default": "Label"
+    },
+    "Show left icon": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "⮑ Left icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "⮑ Right icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Show right icon": {
+     "type": "BOOLEAN",
+     "default": false
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    },
+    "Skin": {
+     "type": "VARIANT",
+     "default": "Outlined",
+     "values": [
+      "Outlined",
+      "Ghost"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small",
+      "Mini"
+     ]
+    },
+    "Position": {
+     "type": "VARIANT",
+     "default": "Left",
+     "values": [
+      "Left",
+      "Middle",
+      "Right",
+      "Single"
+     ]
+    },
+    "Active?": {
+     "type": "VARIANT",
+     "default": "Yes",
+     "values": [
+      "Yes",
+      "No"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Disabled",
+      "Focus"
+     ]
+    }
+   }
+  },
+  "Toggle Icon Button": {
+   "nodeId": "164:20378",
+   "page": "Toggle & Toggle Group",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Icon": {
+     "type": "INSTANCE_SWAP",
+     "default": "1463:197"
+    },
+    "Roundness": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Round"
+     ]
+    },
+    "Skin": {
+     "type": "VARIANT",
+     "default": "Outlined",
+     "values": [
+      "Ghost",
+      "Outlined"
+     ]
+    },
+    "Size": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Large",
+      "Small",
+      "Mini"
+     ]
+    },
+    "Position": {
+     "type": "VARIANT",
+     "default": "Left",
+     "values": [
+      "Left",
+      "Middle",
+      "Right",
+      "Single"
+     ]
+    },
+    "Active?": {
+     "type": "VARIANT",
+     "default": "Yes",
+     "values": [
+      "Yes",
+      "No"
+     ]
+    },
+    "State": {
+     "type": "VARIANT",
+     "default": "Default",
+     "values": [
+      "Default",
+      "Disabled",
+      "Focus"
+     ]
+    }
+   }
+  },
+  "Tooltip": {
+   "nodeId": "133:14788",
+   "page": "Tooltip",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Tooltip text": {
+     "type": "TEXT",
+     "default": "Tooltip text"
+    },
+    "Side": {
+     "type": "VARIANT",
+     "default": "Top",
+     "values": [
+      "Top",
+      "Bottom",
+      "Left",
+      "Right"
+     ]
+    }
+   }
+  },
+  "Vertical Field": {
+   "nodeId": "120:13754",
+   "page": "Field",
+   "type": "COMPONENT_SET",
+   "properties": {
+    "Type": {
+     "type": "VARIANT",
+     "default": "Text Value",
+     "values": [
+      "Select",
+      "Text Value",
+      "Radio",
+      "Textarea",
+      "Checkbox",
+      "Slider"
+     ]
+    }
+   }
+  }
+ }
+}

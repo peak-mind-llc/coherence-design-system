@@ -1,0 +1,3931 @@
+{
+ "$comment": "THE CODE CONNECT SUBSTITUTE (PEA-219 agent enablement). Curated semantic bridge: how each Figma component (figma-snapshot-components.json) is built with the REAL React components in packages/cw-design-system-ts/src/components/ui (import via @coherence/design-system/ui/<name>; the 2 workstation-only reactOnly entries HelpTip/VizCard stay in desktop/src/components/ui as @/components/ui/<name>). Entry kinds: props (cva-backed prop mapping) | alias (fixed-prop projection of another entry) | recipe (composition template) | blocked (do not build — ask) | reactOnly / notInFigma (code-side markers, no Figma twin). Per-value mapping kinds: prop (React enum value) | pseudo (hover/focus — baked into classes, NEVER a prop) | attr (HTML/React attribute) | children (icon/text/slot composition) | class (utility classes) | ignore | unsupported (STOP and ask). Enforced by scripts/check_component_map_drift.mjs (A code↔map, B map↔snapshot, C bijection, D recipes resolve). Agents: resolve EVERY Figma instance through this file — a component not in here does not exist YET. Don't recreate what's already here; a genuinely new component is welcome, but it arrives flagged + registered via CONVENTIONS §7 (component + story + §2 row + an entry here, in the same PR) — never as an unregistered inline lookalike (§7/§9).",
+ "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+ "iconRule": "Figma 'Icon / <kebab-name>' instances (and INSTANCE_SWAP icon slots) map to lucide-react PascalCase imports: Icon / chevron-right → <ChevronRight/>. Apply foreground via the kit's icon convention; never recolor data-vis.",
+ "components": {
+  "Accordion Content": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "AccordionContent"
+     ],
+     "from": "@coherence/design-system/ui/accordion"
+    }
+   ],
+   "structure": "<AccordionContent>{body}</AccordionContent>",
+   "props": {}
+  },
+  "Accordion Content (Bordered)": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "AccordionContent"
+     ],
+     "from": "@coherence/design-system/ui/accordion"
+    }
+   ],
+   "structure": "<AccordionContent>{body}</AccordionContent> inside the bordered item",
+   "props": {}
+  },
+  "Accordion Trigger": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Accordion",
+      "AccordionItem",
+      "AccordionTrigger",
+      "AccordionContent"
+     ],
+     "from": "@coherence/design-system/ui/accordion"
+    }
+   ],
+   "structure": "<Accordion type=\"single\" collapsible><AccordionItem value=\"…\"><AccordionTrigger>{label}</AccordionTrigger><AccordionContent>{content}</AccordionContent></AccordionItem></Accordion>",
+   "props": {
+    "Accordion label": {
+     "kind": "children",
+     "note": "trigger text"
+    },
+    "State": {
+     "values": {
+      "Closed": {
+       "kind": "ignore"
+      },
+      "Open": {
+       "kind": "attr",
+       "attr": "defaultValue",
+       "note": "open item → set Accordion defaultValue to this item"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus ring — baked in"
+      }
+     }
+    }
+   }
+  },
+  "Accordion Trigger (Bordered)": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Accordion",
+      "AccordionItem",
+      "AccordionTrigger"
+     ],
+     "from": "@coherence/design-system/ui/accordion"
+    }
+   ],
+   "structure": "bordered accordion → className=\"rounded-3xl border\" on AccordionItem (per the PEA-219 radius reconcile: Accordion → radius-3xl)",
+   "props": {
+    "Accordion label": {
+     "kind": "children",
+     "note": "trigger text"
+    },
+    "Show border": {
+     "kind": "class",
+     "note": "border on the item"
+    },
+    "Position": {
+     "values": {
+      "First": {
+       "kind": "class",
+       "note": "first/last rounding handled by the bordered-group classes"
+      },
+      "Middle": {
+       "kind": "class",
+       "note": "first/last rounding handled by the bordered-group classes"
+      },
+      "Last": {
+       "kind": "class",
+       "note": "first/last rounding handled by the bordered-group classes"
+      },
+      "Single": {
+       "kind": "class",
+       "note": "first/last rounding handled by the bordered-group classes"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Closed": {
+       "kind": "ignore"
+      },
+      "Open": {
+       "kind": "attr",
+       "attr": "defaultValue"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "baked in"
+      }
+     }
+    }
+   }
+  },
+  "Alert": {
+   "kind": "props",
+   "react": {
+    "import": "Alert",
+    "from": "@coherence/design-system/ui/alert",
+    "file": "packages/cw-design-system-ts/src/components/ui/alert.tsx"
+   },
+   "cva": "alertVariants",
+   "props": {
+    "Type": {
+     "mapsTo": "variant",
+     "values": {
+      "Neutral": {
+       "kind": "prop",
+       "value": "default"
+      },
+      "Success": {
+       "kind": "prop",
+       "value": "success"
+      },
+      "Info": {
+       "kind": "prop",
+       "value": "info"
+      },
+      "Warning": {
+       "kind": "prop",
+       "value": "warning"
+      },
+      "Error": {
+       "kind": "prop",
+       "value": "error"
+      }
+     }
+    },
+    "Line 1": {
+     "kind": "children",
+     "note": "<AlertTitle> child"
+    },
+    "⮑  Line 2": {
+     "kind": "children",
+     "note": "<AlertDescription> child"
+    },
+    "Show Line 2": {
+     "kind": "children",
+     "note": "false → omit <AlertDescription>"
+    },
+    "Show Icon": {
+     "kind": "children",
+     "note": "true → leading lucide icon child (Alert grid-positions it)"
+    },
+    "Show Button": {
+     "kind": "children",
+     "note": "true → trailing action button (absolute top-3 right-3 idiom)"
+    },
+    "Flip Icon": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "unsupported",
+       "note": "icon-on-right alert has no code idiom; STOP and ask"
+      }
+     }
+    },
+    "⮑ Icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    }
+   },
+   "defaults": {
+    "variant": "default"
+   }
+  },
+  "Alert Dialog": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "AlertDialog",
+      "AlertDialogTrigger",
+      "AlertDialogContent",
+      "AlertDialogHeader",
+      "AlertDialogTitle",
+      "AlertDialogDescription",
+      "AlertDialogFooter",
+      "AlertDialogAction",
+      "AlertDialogCancel"
+     ],
+     "from": "@coherence/design-system/ui/alert-dialog"
+    }
+   ],
+   "structure": "<AlertDialog><AlertDialogTrigger asChild>…</AlertDialogTrigger><AlertDialogContent><AlertDialogHeader><AlertDialogTitle/><AlertDialogDescription/></AlertDialogHeader><AlertDialogFooter><AlertDialogCancel/><AlertDialogAction/></AlertDialogFooter></AlertDialogContent></AlertDialog>",
+   "props": {
+    "Type": {
+     "values": {
+      "Desktop": {
+       "kind": "ignore",
+       "note": "responsive — same component"
+      },
+      "Mobile": {
+       "kind": "ignore",
+       "note": "responsive — same component"
+      }
+     }
+    }
+   }
+  },
+  "Area chart": {
+   "kind": "blocked",
+   "note": "§6 hard rule: data-vis is out of scope for kit migrations — no Recharts/chart primitives were installed, and the data-vis palette is off-limits. STOP and ask before building any chart.",
+   "source": "CONVENTIONS §6"
+  },
+  "Avatar": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Avatar",
+      "AvatarImage",
+      "AvatarFallback"
+     ],
+     "from": "@coherence/design-system/ui/avatar"
+    }
+   ],
+   "structure": "<Avatar><AvatarImage src=…/><AvatarFallback>AB</AvatarFallback></Avatar>",
+   "props": {
+    "Picture": {
+     "values": {
+      "On": {
+       "kind": "children",
+       "note": "<AvatarImage>"
+      },
+      "Off": {
+       "kind": "children",
+       "note": "<AvatarFallback> initials"
+      }
+     }
+    },
+    "Size": {
+     "values": {
+      "Regular": {
+       "kind": "ignore",
+       "note": "default size-8"
+      },
+      "Small": {
+       "kind": "class",
+       "note": "size-6"
+      },
+      "Tiny": {
+       "kind": "class",
+       "note": "size-5 — confirm px vs frame"
+      },
+      "Extra Tiny": {
+       "kind": "class",
+       "note": "size-4 — confirm px vs frame"
+      }
+     }
+    },
+    "Roundness Type": {
+     "values": {
+      "Round": {
+       "kind": "ignore",
+       "note": "default rounded-round"
+      },
+      "Roundrect": {
+       "kind": "class",
+       "note": "rounded-md"
+      }
+     }
+    }
+   }
+  },
+  "Avatar Stack": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Avatar",
+      "AvatarFallback"
+     ],
+     "from": "@coherence/design-system/ui/avatar"
+    }
+   ],
+   "structure": "<div className=\"flex -space-x-2\">{<Avatar className=\"ring-2 ring-background-default\"/> × N}</div>",
+   "props": {
+    "Show 3th": {
+     "kind": "children",
+     "note": "3rd avatar"
+    },
+    "Show 4th": {
+     "kind": "children",
+     "note": "4th avatar"
+    },
+    "Show 5th": {
+     "kind": "children",
+     "note": "5th avatar"
+    },
+    "Size": {
+     "values": {
+      "Regular": {
+       "kind": "ignore"
+      },
+      "Small": {
+       "kind": "class",
+       "note": "size-6 avatars"
+      }
+     }
+    },
+    "Type": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      }
+     }
+    }
+   },
+   "source": "CONVENTIONS §5"
+  },
+  "Badge": {
+   "kind": "props",
+   "react": {
+    "import": "Badge",
+    "from": "@coherence/design-system/ui/badge",
+    "file": "packages/cw-design-system-ts/src/components/ui/badge.tsx"
+   },
+   "cva": "badgeVariants",
+   "props": {
+    "Variant": {
+     "mapsTo": "variant",
+     "values": {
+      "Primary": {
+       "kind": "prop",
+       "value": "default"
+      },
+      "Secondary": {
+       "kind": "prop",
+       "value": "secondary"
+      },
+      "Outline": {
+       "kind": "prop",
+       "value": "outline"
+      },
+      "Ghost": {
+       "kind": "prop",
+       "value": "ghost"
+      },
+      "Destructive": {
+       "kind": "prop",
+       "value": "destructive"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      }
+     }
+    },
+    "Roundness": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Round": {
+       "kind": "unsupported",
+       "note": "No code equivalent — the kit is rounded-md only. Flag to the user; do not approximate with rounded-round."
+      }
+     }
+    },
+    "Label": {
+     "kind": "children",
+     "note": "badge text child"
+    },
+    "⮑ Icon left": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    },
+    "Show left icon": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "Show right icon": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "⮑ Icon right": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    }
+   },
+   "defaults": {
+    "variant": "default"
+   },
+   "codeOnly": {
+    "variant=link": "code-only link badge; no Figma twin"
+   }
+  },
+  "Bar chart": {
+   "kind": "blocked",
+   "note": "§6 hard rule: data-vis is out of scope for kit migrations — no Recharts/chart primitives were installed, and the data-vis palette is off-limits. STOP and ask before building any chart.",
+   "source": "CONVENTIONS §6"
+  },
+  "Basic Table Cell": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "TableBody",
+      "TableRow",
+      "TableCell"
+     ],
+     "from": "@coherence/design-system/ui/table"
+    }
+   ],
+   "structure": "<TableBody><TableRow>{<TableCell/>}</TableRow></TableBody>",
+   "props": {
+    "Parity": {
+     "values": {
+      "Odd": {
+       "kind": "ignore"
+      },
+      "Even": {
+       "kind": "ignore",
+       "note": "zebra striping via even:bg-* if the design shows it"
+      }
+     }
+    },
+    "Alignment": {
+     "values": {
+      "Left": {
+       "kind": "ignore"
+      },
+      "Right": {
+       "kind": "class",
+       "note": "text-right"
+      }
+     }
+    }
+   }
+  },
+  "Basic Table Header": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Table",
+      "TableHeader",
+      "TableRow",
+      "TableHead"
+     ],
+     "from": "@coherence/design-system/ui/table"
+    }
+   ],
+   "structure": "<TableHeader><TableRow>{<TableHead/>}</TableRow></TableHeader>",
+   "props": {
+    "Cell Type": {
+     "values": {
+      "Heading": {
+       "kind": "ignore"
+      }
+     }
+    }
+   }
+  },
+  "Breadcrumb": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Breadcrumb",
+      "BreadcrumbList",
+      "BreadcrumbItem",
+      "BreadcrumbLink",
+      "BreadcrumbPage",
+      "BreadcrumbSeparator"
+     ],
+     "from": "@coherence/design-system/ui/breadcrumb"
+    }
+   ],
+   "structure": "<Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink/></BreadcrumbItem><BreadcrumbSeparator/>…<BreadcrumbItem><BreadcrumbPage/></BreadcrumbItem></BreadcrumbList></Breadcrumb>",
+   "props": {
+    "Items": {
+     "values": {
+      "2": {
+       "kind": "children",
+       "note": "2 BreadcrumbItems (last = BreadcrumbPage)"
+      },
+      "3": {
+       "kind": "children",
+       "note": "3 BreadcrumbItems (last = BreadcrumbPage)"
+      },
+      "4": {
+       "kind": "children",
+       "note": "4 BreadcrumbItems (last = BreadcrumbPage)"
+      },
+      "5": {
+       "kind": "children",
+       "note": "5 BreadcrumbItems (last = BreadcrumbPage)"
+      },
+      "6": {
+       "kind": "children",
+       "note": "6 BreadcrumbItems (last = BreadcrumbPage)"
+      }
+     }
+    }
+   }
+  },
+  "Button": {
+   "kind": "props",
+   "react": {
+    "import": "Button",
+    "from": "@coherence/design-system/ui/button",
+    "file": "packages/cw-design-system-ts/src/components/ui/button.tsx"
+   },
+   "cva": "buttonVariants",
+   "props": {
+    "Variant": {
+     "mapsTo": "variant",
+     "values": {
+      "Primary": {
+       "kind": "prop",
+       "value": "default"
+      },
+      "Secondary": {
+       "kind": "prop",
+       "value": "secondary"
+      },
+      "Outline": {
+       "kind": "prop",
+       "value": "outline"
+      },
+      "Ghost": {
+       "kind": "prop",
+       "value": "ghost"
+      },
+      "Destructive": {
+       "kind": "prop",
+       "value": "destructive"
+      }
+     }
+    },
+    "Size": {
+     "mapsTo": "size",
+     "values": {
+      "Default": {
+       "kind": "prop",
+       "value": "default"
+      },
+      "Small": {
+       "kind": "prop",
+       "value": "sm"
+      },
+      "Mini": {
+       "kind": "prop",
+       "value": "xs"
+      },
+      "Large": {
+       "kind": "prop",
+       "value": "lg"
+      },
+      "Extra Large": {
+       "kind": "unsupported",
+       "note": "No code size beyond lg. STOP and ask — do not approximate with lg."
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Hover & Active": {
+       "kind": "pseudo",
+       "note": "CSS :hover/:active — baked in; never a prop"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    },
+    "Roundness": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Round": {
+       "kind": "unsupported",
+       "note": "No code equivalent — the kit is rounded-md only. Flag to the user; do not approximate with rounded-round."
+      }
+     }
+    },
+    "Show right icon": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "⮑ Right icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    },
+    "⮑ Left icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    },
+    "Show left icon": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    }
+   },
+   "defaults": {
+    "variant": "default",
+    "size": "default"
+   },
+   "codeOnly": {
+    "variant=link": "Figma models this as the separate 'Link Button' component",
+    "size=icon|icon-xs|icon-sm|icon-lg": "Figma models these as the separate 'Icon Button' component"
+   }
+  },
+  "Button Group": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "ButtonGroup"
+     ],
+     "from": "@coherence/design-system/ui/button-group"
+    }
+   ],
+   "structure": "<ButtonGroup>{<Button variant=\"outline|ghost\"> × N}</ButtonGroup> — this Figma set is ONE segment; Position is automatic in code. Since 2026-06-11 each Figma child nests a real Button instance (exposed): label + icons are edited on the nested Button, not via group-level props.",
+   "note": "code-only: buttonGroupVariants orientation=vertical has no Figma twin",
+   "props": {
+    "Skin": {
+     "values": {
+      "Outlined": {
+       "kind": "children",
+       "note": "Button variant=\"outline\" children"
+      },
+      "Ghost": {
+       "kind": "children",
+       "note": "Button variant=\"ghost\" children"
+      }
+     }
+    },
+    "Size": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Large": {
+       "kind": "children",
+       "note": "Button size=\"lg\" children"
+      },
+      "Small": {
+       "kind": "children",
+       "note": "Button size=\"sm\" children"
+      }
+     }
+    },
+    "Position": {
+     "values": {
+      "Left": {
+       "kind": "ignore",
+       "note": "segment position — automatic from composition order"
+      },
+      "Middle": {
+       "kind": "ignore",
+       "note": "segment position — automatic from composition order"
+      },
+      "Right": {
+       "kind": "ignore",
+       "note": "segment position — automatic from composition order"
+      },
+      "Single": {
+       "kind": "ignore",
+       "note": "segment position — automatic from composition order"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      },
+      "Hover": {
+       "kind": "pseudo",
+       "note": "CSS :hover — baked into the component classes; never a prop"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    }
+   }
+  },
+  "Button Group Icon Button": {
+   "kind": "alias",
+   "target": "Button Group",
+   "fixedProps": {},
+   "note": "a ButtonGroup segment whose Button child is icon-only (size icon-*)."
+  },
+  "Calendar": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Calendar"
+     ],
+     "from": "@coherence/design-system/ui/calendar"
+    }
+   ],
+   "structure": "<Calendar mode=\"single\" selected onSelect/>",
+   "props": {
+    "Months": {
+     "values": {
+      "1 Month": {
+       "kind": "ignore"
+      },
+      "2 months": {
+       "kind": "attr",
+       "attr": "numberOfMonths",
+       "note": "numberOfMonths={2}"
+      },
+      "3 months": {
+       "kind": "attr",
+       "attr": "numberOfMonths",
+       "note": "numberOfMonths={3}"
+      }
+     }
+    }
+   }
+  },
+  "Card": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Card",
+      "CardHeader",
+      "CardTitle",
+      "CardDescription",
+      "CardContent",
+      "CardFooter"
+     ],
+     "from": "@coherence/design-system/ui/card"
+    }
+   ],
+   "structure": "<Card><CardHeader><CardTitle/><CardDescription/></CardHeader><CardContent>…</CardContent><CardFooter>…</CardFooter></Card>",
+   "props": {
+    "Slot No.": {
+     "values": {
+      "1 Slot": {
+       "kind": "children",
+       "note": "CardContent only"
+      },
+      "2 Slots": {
+       "kind": "children",
+       "note": "CardHeader + CardContent"
+      },
+      "3 Slots": {
+       "kind": "children",
+       "note": "CardHeader + CardContent + CardFooter"
+      }
+     }
+    },
+    "Header Slot": {
+     "kind": "children",
+     "note": "CardHeader content"
+    },
+    "Main Slot": {
+     "kind": "children",
+     "note": "CardContent content"
+    },
+    "Footer Slot": {
+     "kind": "children",
+     "note": "CardFooter content"
+    }
+   }
+  },
+  "Carousel": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Carousel",
+      "CarouselContent",
+      "CarouselItem",
+      "CarouselPrevious",
+      "CarouselNext"
+     ],
+     "from": "@coherence/design-system/ui/carousel"
+    }
+   ],
+   "structure": "<Carousel><CarouselContent>{<CarouselItem/> × N}</CarouselContent><CarouselPrevious/><CarouselNext/></Carousel>",
+   "props": {
+    "Slides": {
+     "values": {
+      "1 Slide": {
+       "kind": "children",
+       "note": "1 CarouselItems"
+      },
+      "2 Slides": {
+       "kind": "children",
+       "note": "2 CarouselItems"
+      },
+      "3 Slides": {
+       "kind": "children",
+       "note": "3 CarouselItems"
+      }
+     }
+    }
+   }
+  },
+  "Carousel with Image": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Carousel",
+      "CarouselContent",
+      "CarouselItem"
+     ],
+     "from": "@coherence/design-system/ui/carousel"
+    }
+   ],
+   "structure": "Carousel whose items contain images",
+   "props": {
+    "Type": {
+     "values": {
+      "3 Slides": {
+       "kind": "children",
+       "note": "N image CarouselItems"
+      },
+      "2 Slides": {
+       "kind": "children",
+       "note": "N image CarouselItems"
+      },
+      "1 Slide": {
+       "kind": "children",
+       "note": "N image CarouselItems"
+      }
+     }
+    }
+   }
+  },
+  "Chart": {
+   "kind": "blocked",
+   "note": "§6 hard rule: data-vis is out of scope for kit migrations — no Recharts/chart primitives were installed, and the data-vis palette is off-limits. STOP and ask before building any chart.",
+   "source": "CONVENTIONS §6"
+  },
+  "Checkbox": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Checkbox"
+     ],
+     "from": "@coherence/design-system/ui/checkbox"
+    }
+   ],
+   "structure": "<Checkbox /> (+ <Label htmlFor>)",
+   "props": {
+    "Checked?": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "defaultChecked"
+      },
+      "Indeterminate": {
+       "kind": "attr",
+       "attr": "checked",
+       "note": "checked=\"indeterminate\""
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      },
+      "Error": {
+       "kind": "attr",
+       "attr": "aria-invalid",
+       "note": "aria-invalid drives the error border/ring"
+      },
+      "Error Focus": {
+       "kind": "pseudo",
+       "note": "focus ring in error state — baked in (aria-invalid + focus-visible)"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    }
+   }
+  },
+  "Checkbox Group": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Field",
+      "FieldLabel"
+     ],
+     "from": "@coherence/design-system/ui/field"
+    }
+   ],
+   "structure": "stacked/inline Checkbox + Label rows — <Field orientation=\"horizontal\"> per row",
+   "props": {
+    "Layout": {
+     "values": {
+      "Inline": {
+       "kind": "children",
+       "note": "label beside checkbox"
+      },
+      "Block": {
+       "kind": "children",
+       "note": "label + description block"
+      }
+     }
+    },
+    "Checked?": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "defaultChecked"
+      }
+     }
+    }
+   }
+  },
+  "Command": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Command",
+      "CommandInput",
+      "CommandList",
+      "CommandEmpty",
+      "CommandGroup"
+     ],
+     "from": "@coherence/design-system/ui/command"
+    }
+   ],
+   "structure": "<Command><CommandInput/><CommandList><CommandEmpty/><CommandGroup>…</CommandGroup></CommandList></Command>",
+   "props": {}
+  },
+  "Command Item": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "CommandItem",
+      "CommandShortcut"
+     ],
+     "from": "@coherence/design-system/ui/command"
+    }
+   ],
+   "structure": "<CommandItem><Icon/>{label}<CommandShortcut/></CommandItem>",
+   "props": {
+    "State": {
+     "values": {
+      "Regular": {
+       "kind": "ignore"
+      },
+      "Hover": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Active": {
+       "kind": "pseudo",
+       "note": "data-selected — cmdk manages"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    },
+    "Show line 2": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "⮑ Line 2": {
+     "kind": "children",
+     "note": "text content child"
+    },
+    "Line 1": {
+     "kind": "children",
+     "note": "text content child"
+    },
+    "Show icon": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "⮑ Icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    },
+    "Show right decoration": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    }
+   }
+  },
+  "Date Picker": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Popover",
+      "PopoverTrigger",
+      "PopoverContent"
+     ],
+     "from": "@coherence/design-system/ui/popover"
+    }
+   ],
+   "structure": "shadcn date-picker idiom: <Popover><PopoverTrigger asChild><Button variant=\"outline\">{date|placeholder}<CalendarIcon/></Button></PopoverTrigger><PopoverContent><Calendar mode=\"single\"/></PopoverContent></Popover>",
+   "props": {
+    "State": {
+     "values": {
+      "Placeholder": {
+       "kind": "ignore",
+       "note": "placeholder label"
+      },
+      "Value": {
+       "kind": "attr",
+       "attr": "selected",
+       "note": "a selected date"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "baked in"
+      }
+     }
+    }
+   }
+  },
+  "Dialog": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Dialog",
+      "DialogTrigger",
+      "DialogContent",
+      "DialogHeader",
+      "DialogTitle",
+      "DialogDescription",
+      "DialogFooter"
+     ],
+     "from": "@coherence/design-system/ui/dialog"
+    }
+   ],
+   "structure": "<Dialog><DialogTrigger asChild>…</DialogTrigger><DialogContent><DialogHeader><DialogTitle/><DialogDescription/></DialogHeader>{body}<DialogFooter>…</DialogFooter></DialogContent></Dialog>",
+   "props": {
+    "Type": {
+     "values": {
+      "Desktop": {
+       "kind": "ignore",
+       "note": "responsive"
+      },
+      "Desktop Scrollable": {
+       "kind": "class",
+       "note": "max-h + overflow-y-auto on DialogContent"
+      },
+      "Mobile": {
+       "kind": "ignore",
+       "note": "responsive"
+      },
+      "Mobile Full Screen Scrollable": {
+       "kind": "class",
+       "note": "full-screen variant — confirm with user"
+      }
+     }
+    }
+   }
+  },
+  "Dialog Footer": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "DialogFooter"
+     ],
+     "from": "@coherence/design-system/ui/dialog"
+    }
+   ],
+   "structure": "<DialogFooter> with Button children",
+   "props": {
+    "Type": {
+     "values": {
+      "2 Buttons Right": {
+       "kind": "children",
+       "note": "Cancel + primary, right-aligned"
+      },
+      "2 Full-width Buttons": {
+       "kind": "children",
+       "note": "two w-full Buttons"
+      },
+      "Single Full-width Button": {
+       "kind": "children",
+       "note": "one w-full Button"
+      }
+     }
+    }
+   }
+  },
+  "Dialog Header": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "DialogHeader",
+      "DialogTitle",
+      "DialogClose"
+     ],
+     "from": "@coherence/design-system/ui/dialog"
+    }
+   ],
+   "structure": "<DialogHeader> (close button is built into DialogContent)",
+   "props": {
+    "Type": {
+     "values": {
+      "Header": {
+       "kind": "children",
+       "note": "title + description"
+      },
+      "Close Only": {
+       "kind": "children",
+       "note": "no title — DialogContent close only"
+      },
+      "Icon Button Close": {
+       "kind": "children",
+       "note": "default DialogContent close"
+      }
+     }
+    }
+   }
+  },
+  "Drawer": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Drawer",
+      "DrawerTrigger",
+      "DrawerContent",
+      "DrawerHeader",
+      "DrawerTitle",
+      "DrawerFooter"
+     ],
+     "from": "@coherence/design-system/ui/drawer"
+    }
+   ],
+   "structure": "<Drawer><DrawerTrigger asChild>…</DrawerTrigger><DrawerContent><DrawerHeader><DrawerTitle/></DrawerHeader>{body}<DrawerFooter/></DrawerContent></Drawer>",
+   "props": {}
+  },
+  "Empty": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Empty",
+      "EmptyHeader",
+      "EmptyMedia",
+      "EmptyTitle",
+      "EmptyDescription",
+      "EmptyContent"
+     ],
+     "from": "@coherence/design-system/ui/empty"
+    }
+   ],
+   "structure": "<Empty><EmptyHeader><EmptyMedia variant=\"icon|default\"/><EmptyTitle/><EmptyDescription/></EmptyHeader><EmptyContent>{actions}</EmptyContent></Empty>",
+   "props": {
+    "Variant": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Outline": {
+       "kind": "class",
+       "note": "border"
+      },
+      "Outline dashed": {
+       "kind": "class",
+       "note": "border border-dashed"
+      },
+      "Background": {
+       "kind": "class",
+       "note": "bg-background-muted rounded-3xl — confirm vs frame"
+      }
+     }
+    },
+    "Title": {
+     "kind": "children",
+     "note": "false → omit EmptyTitle"
+    },
+    "Description": {
+     "kind": "children",
+     "note": "false → omit EmptyDescription"
+    },
+    "⮑ title": {
+     "kind": "children",
+     "note": "<EmptyTitle> text"
+    },
+    "⮑ description": {
+     "kind": "children",
+     "note": "<EmptyDescription> text"
+    },
+    "Show buttons": {
+     "kind": "children",
+     "note": "<EmptyContent> Buttons"
+    },
+    "Show link": {
+     "kind": "children",
+     "note": "<EmptyContent> link Button"
+    },
+    "emptyMedia: avatar": {
+     "kind": "children",
+     "note": "<EmptyMedia> + Avatar"
+    },
+    "emptyMedia: avatarStack": {
+     "kind": "children",
+     "note": "<EmptyMedia> + avatar stack"
+    },
+    "emptyMedia: iconBadge": {
+     "kind": "children",
+     "note": "<EmptyMedia variant=\"icon\"> + icon"
+    }
+   }
+  },
+  "HelpTip (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@/components/ui/HelpTip"
+   },
+   "note": "workstation custom (glossary tooltips); no Figma twin yet."
+  },
+  "Horizontal Field": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Field",
+      "FieldLabel",
+      "FieldContent"
+     ],
+     "from": "@coherence/design-system/ui/field"
+    }
+   ],
+   "structure": "<Field orientation=\"horizontal\"><FieldContent><FieldLabel/>…</FieldContent>{control}</Field>",
+   "props": {
+    "Type": {
+     "values": {
+      "Select": {
+       "kind": "children",
+       "note": "control child = Select"
+      },
+      "Text Value": {
+       "kind": "children",
+       "note": "control child = Text Value"
+      },
+      "Radio": {
+       "kind": "children",
+       "note": "control child = Radio"
+      },
+      "Textarea": {
+       "kind": "children",
+       "note": "control child = Textarea"
+      },
+      "Checkbox": {
+       "kind": "children",
+       "note": "control child = Checkbox"
+      },
+      "Slider": {
+       "kind": "children",
+       "note": "control child = Slider"
+      }
+     }
+    }
+   },
+   "source": "CONVENTIONS §4.3"
+  },
+  "Hover Card": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "HoverCard",
+      "HoverCardTrigger",
+      "HoverCardContent"
+     ],
+     "from": "@coherence/design-system/ui/hover-card"
+    }
+   ],
+   "structure": "<HoverCard><HoverCardTrigger asChild>…</HoverCardTrigger><HoverCardContent>…</HoverCardContent></HoverCard>",
+   "props": {}
+  },
+  "Icon Badge": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "ItemMedia"
+     ],
+     "from": "@coherence/design-system/ui/item"
+    }
+   ],
+   "structure": "<ItemMedia variant=\"icon\"><Icon/></ItemMedia> (kept separate from Badge by user ruling)",
+   "source": "CONVENTIONS §2 / Phase 4 decisions",
+   "props": {}
+  },
+  "Icon Button": {
+   "kind": "alias",
+   "target": "Button",
+   "fixedProps": {
+    "size": "icon"
+   },
+   "note": "Figma Sizes → code icon sizes: Mini→icon-xs, Small→icon-sm, Default→icon, Large→icon-lg. Icon INSTANCE_SWAP → lucide child. Variant/State/Roundness follow the Button entry.",
+   "source": "CONVENTIONS §4.1"
+  },
+  "Input": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Input"
+     ],
+     "from": "@coherence/design-system/ui/input"
+    }
+   ],
+   "structure": "<Input type=… placeholder=…/> — decorations/prepend/append → use InputGroup",
+   "note": "input-group.tsx is the composition surface for decorated inputs (not yet in Figma as its own set)",
+   "props": {
+    "Size": {
+     "values": {
+      "Regular": {
+       "kind": "ignore",
+       "note": "code Input is single-size (h-9)"
+      },
+      "Large": {
+       "kind": "unsupported",
+       "note": "no code size; STOP and ask"
+      },
+      "Small": {
+       "kind": "unsupported",
+       "note": "no code size; STOP and ask"
+      },
+      "Mini": {
+       "kind": "unsupported",
+       "note": "no code size; STOP and ask"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Empty": {
+       "kind": "ignore"
+      },
+      "Placeholder": {
+       "kind": "attr",
+       "attr": "placeholder",
+       "note": "the placeholder text attribute"
+      },
+      "Value": {
+       "kind": "attr",
+       "attr": "defaultValue",
+       "note": "render with a value"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      },
+      "Error": {
+       "kind": "attr",
+       "attr": "aria-invalid",
+       "note": "aria-invalid drives the error border/ring"
+      },
+      "Error Focus": {
+       "kind": "pseudo",
+       "note": "focus ring in error state — baked in (aria-invalid + focus-visible)"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    },
+    "Roundness": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Round": {
+       "kind": "unsupported",
+       "note": "No code equivalent — the kit is rounded-md only. Flag to the user; do not approximate with rounded-round."
+      }
+     }
+    },
+    "Show decoration left": {
+     "kind": "children",
+     "note": "<InputGroup><InputGroupAddon><Icon/></InputGroupAddon>…"
+    },
+    "Show decoration right": {
+     "kind": "children",
+     "note": "<InputGroupAddon align=\"inline-end\">"
+    },
+    "Show prepend text": {
+     "kind": "children",
+     "note": "<InputGroupText> prepend"
+    },
+    "Show append text": {
+     "kind": "children",
+     "note": "<InputGroupText> append"
+    },
+    "Show cursor": {
+     "kind": "ignore",
+     "note": "design-time artifact"
+    },
+    "Value": {
+     "kind": "attr",
+     "attr": "defaultValue"
+    }
+   }
+  },
+  "Input File": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Input"
+     ],
+     "from": "@coherence/design-system/ui/input"
+    }
+   ],
+   "structure": "<Input type=\"file\"/>",
+   "props": {
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      },
+      "Error": {
+       "kind": "attr",
+       "attr": "aria-invalid",
+       "note": "aria-invalid drives the error border/ring"
+      },
+      "Error Focus": {
+       "kind": "pseudo",
+       "note": "focus ring in error state — baked in (aria-invalid + focus-visible)"
+      }
+     }
+    },
+    "Roundness": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Round": {
+       "kind": "unsupported",
+       "note": "No code equivalent — the kit is rounded-md only. Flag to the user; do not approximate with rounded-round."
+      }
+     }
+    },
+    "Size": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Large": {
+       "kind": "unsupported",
+       "note": "no code size"
+      },
+      "Small": {
+       "kind": "unsupported",
+       "note": "no code size"
+      },
+      "Mini": {
+       "kind": "unsupported",
+       "note": "no code size"
+      }
+     }
+    },
+    "File Chosen": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "ignore",
+       "note": "runtime state"
+      }
+     }
+    }
+   }
+  },
+  "Input OTP": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "InputOTP",
+      "InputOTPGroup",
+      "InputOTPSlot"
+     ],
+     "from": "@coherence/design-system/ui/input-otp"
+    }
+   ],
+   "structure": "<InputOTP maxLength={6}><InputOTPGroup>{<InputOTPSlot index={i}/>}</InputOTPGroup></InputOTP>",
+   "props": {
+    "State": {
+     "values": {
+      "Empty": {
+       "kind": "ignore"
+      },
+      "Placeholder": {
+       "kind": "attr",
+       "attr": "placeholder",
+       "note": "the placeholder text attribute"
+      },
+      "Value": {
+       "kind": "attr",
+       "attr": "defaultValue",
+       "note": "render with a value"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      },
+      "Error": {
+       "kind": "attr",
+       "attr": "aria-invalid",
+       "note": "aria-invalid drives the error border/ring"
+      },
+      "Error Focus": {
+       "kind": "pseudo",
+       "note": "focus ring in error state — baked in (aria-invalid + focus-visible)"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    },
+    "Position": {
+     "values": {
+      "Left": {
+       "kind": "ignore",
+       "note": "slot position — automatic from index"
+      },
+      "Middle": {
+       "kind": "ignore",
+       "note": "slot position — automatic from index"
+      },
+      "Right": {
+       "kind": "ignore",
+       "note": "slot position — automatic from index"
+      }
+     }
+    },
+    "Size": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Large": {
+       "kind": "unsupported",
+       "note": "no code size"
+      },
+      "Small": {
+       "kind": "unsupported",
+       "note": "no code size"
+      },
+      "Mini": {
+       "kind": "unsupported",
+       "note": "no code size"
+      }
+     }
+    }
+   }
+  },
+  "Item": {
+   "kind": "props",
+   "react": {
+    "import": "Item",
+    "from": "@coherence/design-system/ui/item",
+    "file": "packages/cw-design-system-ts/src/components/ui/item.tsx"
+   },
+   "cva": "itemVariants",
+   "props": {
+    "Variant": {
+     "mapsTo": "variant",
+     "values": {
+      "Default": {
+       "kind": "prop",
+       "value": "default"
+      },
+      "Outline": {
+       "kind": "prop",
+       "value": "outline"
+      },
+      "Muted": {
+       "kind": "prop",
+       "value": "muted"
+      }
+     }
+    },
+    "Size": {
+     "mapsTo": "size",
+     "values": {
+      "Default": {
+       "kind": "prop",
+       "value": "default"
+      },
+      "Small": {
+       "kind": "prop",
+       "value": "sm"
+      }
+     }
+    },
+    "asChild": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "asChild",
+       "note": "render as link/button via asChild"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Hover": {
+       "kind": "pseudo",
+       "note": "CSS :hover — baked into the component classes; never a prop"
+      }
+     }
+    },
+    "Title": {
+     "kind": "children",
+     "note": "<ItemTitle> child"
+    },
+    "Description": {
+     "kind": "children",
+     "note": "<ItemDescription> child"
+    },
+    "Label": {
+     "kind": "children",
+     "note": "label text"
+    },
+    "itemMedia: avatar": {
+     "kind": "children",
+     "note": "<ItemMedia> + Avatar"
+    },
+    "itemMedia: icon": {
+     "kind": "children",
+     "note": "<ItemMedia variant=\"icon\"> + icon"
+    },
+    "itemMedia: avatarStack": {
+     "kind": "children",
+     "note": "<ItemMedia> + avatar stack recipe"
+    },
+    "itemMedia: image": {
+     "kind": "children",
+     "note": "<ItemMedia variant=\"image\"> + img"
+    },
+    "itemMedia: iconBadge": {
+     "kind": "children",
+     "note": "<ItemMedia variant=\"icon\"> (Icon Badge recipe)"
+    },
+    "itemAction: icon": {
+     "kind": "children",
+     "note": "<ItemActions> + icon"
+    },
+    "itemAction: button": {
+     "kind": "children",
+     "note": "<ItemActions> + <Button>"
+    },
+    "itemAction: iconButton": {
+     "kind": "children",
+     "note": "<ItemActions> + <Button size=\"icon-*\">"
+    },
+    "itemAction: label": {
+     "kind": "children",
+     "note": "<ItemActions> + text"
+    }
+   },
+   "defaults": {
+    "variant": "default",
+    "size": "default"
+   }
+  },
+  "Kbd": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Kbd"
+     ],
+     "from": "@coherence/design-system/ui/kbd"
+    }
+   ],
+   "structure": "<Kbd>{key}</Kbd>",
+   "props": {
+    "key": {
+     "kind": "children",
+     "note": "key text"
+    }
+   }
+  },
+  "Kbd Combo": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Kbd",
+      "KbdGroup"
+     ],
+     "from": "@coherence/design-system/ui/kbd"
+    }
+   ],
+   "structure": "<KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd>…</KbdGroup>",
+   "props": {
+    "kbd item 2": {
+     "kind": "children",
+     "note": "2nd Kbd"
+    },
+    "kbd item 3": {
+     "kind": "children",
+     "note": "3rd Kbd"
+    }
+   }
+  },
+  "Label": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Label"
+     ],
+     "from": "@coherence/design-system/ui/label"
+    }
+   ],
+   "structure": "<Label htmlFor=…>…</Label>",
+   "props": {
+    "Layout": {
+     "values": {
+      "Block": {
+       "kind": "ignore"
+      },
+      "Inline": {
+       "kind": "ignore",
+       "note": "layout decided by the parent Field orientation"
+      }
+     }
+    }
+   }
+  },
+  "Legend": {
+   "kind": "blocked",
+   "note": "§6 hard rule: data-vis is out of scope for kit migrations — no Recharts/chart primitives were installed, and the data-vis palette is off-limits. STOP and ask before building any chart.",
+   "source": "CONVENTIONS §6"
+  },
+  "Line chart": {
+   "kind": "blocked",
+   "note": "§6 hard rule: data-vis is out of scope for kit migrations — no Recharts/chart primitives were installed, and the data-vis palette is off-limits. STOP and ask before building any chart.",
+   "source": "CONVENTIONS §6"
+  },
+  "Link Button": {
+   "kind": "alias",
+   "target": "Button",
+   "fixedProps": {
+    "variant": "link"
+   },
+   "note": "Sizes map like Button (Mini→xs, Small→sm, Default→default, Large→lg); icons → children.",
+   "source": "CONVENTIONS §4.1"
+  },
+  "Loading Button": {
+   "kind": "alias",
+   "target": "Button",
+   "fixedProps": {
+    "disabled": true
+   },
+   "note": "Button + <Spinner> leading child + disabled while loading. Sizes map like Button.",
+   "source": "CONVENTIONS §5"
+  },
+  "Menu": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "SelectContent"
+     ],
+     "from": "@coherence/design-system/ui/select"
+    }
+   ],
+   "structure": "the dropdown surface — SelectContent / DropdownMenuContent / PopoverContent depending on the trigger context",
+   "props": {
+    "Component": {
+     "kind": "children",
+     "note": "menu items"
+    },
+    "Content": {
+     "kind": "children",
+     "note": "slot content"
+    },
+    "Spacing": {
+     "values": {
+      "2px": {
+       "kind": "ignore",
+       "note": "content padding is built in"
+      },
+      "8px": {
+       "kind": "ignore",
+       "note": "content padding is built in"
+      }
+     }
+    }
+   }
+  },
+  "Menu Item": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "SelectItem"
+     ],
+     "from": "@coherence/design-system/ui/select"
+    }
+   ],
+   "structure": "<SelectItem value=…> / <DropdownMenuItem> per context; destructive → DropdownMenuItem variant=\"destructive\"",
+   "props": {
+    "Type": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Destructive": {
+       "kind": "attr",
+       "attr": "variant",
+       "note": "DropdownMenuItem variant=\"destructive\" (data-variant)"
+      }
+     }
+    },
+    "Size": {
+     "values": {
+      "Regular": {
+       "kind": "ignore"
+      },
+      "Large": {
+       "kind": "unsupported",
+       "note": "no code size"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Hover": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Active": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Selected": {
+       "kind": "attr",
+       "attr": "data-state",
+       "note": "selected = Select value match / DropdownMenuCheckboxItem checked"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    },
+    "Show left decoration": {
+     "kind": "children",
+     "note": "leading icon"
+    },
+    "Show right decoration": {
+     "kind": "children",
+     "note": "trailing shortcut/check"
+    },
+    "Show line 2": {
+     "kind": "children",
+     "note": "two-line item"
+    }
+   }
+  },
+  "Navigation Menu": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "NavigationMenu",
+      "NavigationMenuList",
+      "NavigationMenuItem",
+      "NavigationMenuTrigger",
+      "NavigationMenuContent",
+      "NavigationMenuLink"
+     ],
+     "from": "@coherence/design-system/ui/navigation-menu"
+    }
+   ],
+   "structure": "<NavigationMenu><NavigationMenuList><NavigationMenuItem><NavigationMenuTrigger/><NavigationMenuContent/></NavigationMenuItem>…</NavigationMenuList></NavigationMenu>",
+   "props": {}
+  },
+  "Pagination": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Pagination",
+      "PaginationContent",
+      "PaginationItem",
+      "PaginationPrevious",
+      "PaginationNext"
+     ],
+     "from": "@coherence/design-system/ui/pagination"
+    }
+   ],
+   "structure": "<Pagination><PaginationContent><PaginationItem><PaginationPrevious/></PaginationItem>…<PaginationItem><PaginationNext/></PaginationItem></PaginationContent></Pagination>",
+   "props": {
+    "Type": {
+     "values": {
+      "Next": {
+       "kind": "children",
+       "note": "<PaginationNext/>"
+      },
+      "Previous": {
+       "kind": "children",
+       "note": "<PaginationPrevious/>"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Regular": {
+       "kind": "ignore"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "aria-disabled",
+       "note": "aria-disabled + pointer-events-none"
+      }
+     }
+    }
+   }
+  },
+  "Pagination Button": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "PaginationLink"
+     ],
+     "from": "@coherence/design-system/ui/pagination"
+    }
+   ],
+   "structure": "<PaginationLink isActive={…}>{n}</PaginationLink>",
+   "props": {
+    "Active": {
+     "values": {
+      "On": {
+       "kind": "attr",
+       "attr": "isActive"
+      },
+      "Off": {
+       "kind": "ignore"
+      }
+     }
+    }
+   }
+  },
+  "Pagination Ellipsis": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "PaginationEllipsis"
+     ],
+     "from": "@coherence/design-system/ui/pagination"
+    }
+   ],
+   "structure": "<PaginationEllipsis/>",
+   "props": {}
+  },
+  "Progress": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Progress"
+     ],
+     "from": "@coherence/design-system/ui/progress"
+    }
+   ],
+   "structure": "<Progress value={n}/>",
+   "props": {
+    "Progress": {
+     "values": {
+      "0": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "value={0}"
+      },
+      "10": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "value={10}"
+      },
+      "25": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "value={25}"
+      },
+      "33": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "value={33}"
+      },
+      "50": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "value={50}"
+      },
+      "66": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "value={66}"
+      },
+      "75": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "value={75}"
+      },
+      "90": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "value={90}"
+      },
+      "100": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "value={100}"
+      }
+     }
+    }
+   }
+  },
+  "Radio": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "RadioGroup",
+      "RadioGroupItem"
+     ],
+     "from": "@coherence/design-system/ui/radio-group"
+    }
+   ],
+   "structure": "<RadioGroup><RadioGroupItem value=…/></RadioGroup>",
+   "props": {
+    "Checked?": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "defaultValue",
+       "note": "set RadioGroup defaultValue to this item"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      },
+      "Error": {
+       "kind": "attr",
+       "attr": "aria-invalid",
+       "note": "aria-invalid drives the error border/ring"
+      },
+      "Error Focus": {
+       "kind": "pseudo",
+       "note": "focus ring in error state — baked in (aria-invalid + focus-visible)"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    }
+   }
+  },
+  "Radio Group": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "RadioGroup",
+      "RadioGroupItem"
+     ],
+     "from": "@coherence/design-system/ui/radio-group"
+    }
+   ],
+   "structure": "RadioGroupItem + Label rows",
+   "props": {
+    "Checked?": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "defaultValue"
+      }
+     }
+    },
+    "Layout": {
+     "values": {
+      "Inline": {
+       "kind": "children",
+       "note": "label beside radio"
+      },
+      "Block": {
+       "kind": "children",
+       "note": "label + description block"
+      }
+     }
+    }
+   }
+  },
+  "Resizable": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "ResizablePanelGroup",
+      "ResizablePanel",
+      "ResizableHandle"
+     ],
+     "from": "@coherence/design-system/ui/resizable"
+    }
+   ],
+   "structure": "<ResizablePanelGroup direction=\"horizontal|vertical\"><ResizablePanel/><ResizableHandle/><ResizablePanel/></ResizablePanelGroup>",
+   "props": {
+    "Orientation": {
+     "values": {
+      "Horizontal": {
+       "kind": "attr",
+       "attr": "direction",
+       "note": "direction=\"horizontal\""
+      },
+      "Vertical": {
+       "kind": "attr",
+       "attr": "direction",
+       "note": "direction=\"vertical\""
+      }
+     }
+    }
+   }
+  },
+  "Rich Checkbox Group": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Field",
+      "FieldLabel",
+      "FieldDescription"
+     ],
+     "from": "@coherence/design-system/ui/field"
+    }
+   ],
+   "structure": "bordered selectable row: <FieldLabel><Field orientation=\"horizontal\"><Checkbox/><FieldContent>…</FieldContent></Field></FieldLabel>",
+   "props": {
+    "Checked": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "defaultChecked"
+      }
+     }
+    },
+    "Flipped": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "children",
+       "note": "checkbox on the right — reverse the row order"
+      }
+     }
+    },
+    "Line 1": {
+     "kind": "children",
+     "note": "<FieldTitle>"
+    },
+    "⮑ Line 2": {
+     "kind": "children",
+     "note": "<FieldDescription>"
+    },
+    "Show Line 2": {
+     "kind": "children",
+     "note": "false → omit description"
+    }
+   }
+  },
+  "Rich Radio Group": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Field",
+      "FieldLabel",
+      "FieldDescription"
+     ],
+     "from": "@coherence/design-system/ui/field"
+    }
+   ],
+   "structure": "bordered selectable row with RadioGroupItem (mirror Rich Checkbox Group)",
+   "props": {
+    "Checked": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "defaultValue"
+      }
+     }
+    },
+    "Flipped": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "children",
+       "note": "radio on the right"
+      }
+     }
+    },
+    "Line 1": {
+     "kind": "children",
+     "note": "<FieldTitle>"
+    },
+    "⮑ Line 2": {
+     "kind": "children",
+     "note": "<FieldDescription>"
+    },
+    "Show Line 2": {
+     "kind": "children",
+     "note": "false → omit description"
+    }
+   }
+  },
+  "Rich Switch Group": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Field",
+      "FieldLabel",
+      "FieldDescription"
+     ],
+     "from": "@coherence/design-system/ui/field"
+    }
+   ],
+   "structure": "bordered selectable row with Switch (mirror Rich Checkbox Group)",
+   "props": {
+    "Checked?": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "defaultChecked"
+      }
+     }
+    },
+    "Flipped": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "children",
+       "note": "switch on the right"
+      }
+     }
+    },
+    "Show Line 2": {
+     "kind": "children",
+     "note": "false → omit description"
+    }
+   }
+  },
+  "Scrollbar": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "ScrollArea",
+      "ScrollBar"
+     ],
+     "from": "@coherence/design-system/ui/scroll-area"
+    }
+   ],
+   "structure": "<ScrollArea>…<ScrollBar orientation=…/></ScrollArea>",
+   "props": {
+    "Type": {
+     "values": {
+      "Vertical": {
+       "kind": "ignore",
+       "note": "default"
+      },
+      "Horizontal": {
+       "kind": "attr",
+       "attr": "orientation",
+       "note": "orientation=\"horizontal\""
+      }
+     }
+    }
+   }
+  },
+  "Select & Combobox": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Select",
+      "SelectTrigger",
+      "SelectValue",
+      "SelectContent",
+      "SelectItem"
+     ],
+     "from": "@coherence/design-system/ui/select"
+    }
+   ],
+   "structure": "UX-intent rule (§4.2): pick-from-list → <Select><SelectTrigger><SelectValue/></SelectTrigger><SelectContent>…</SelectContent></Select>; type-to-filter → <Combobox options value onValueChange/> from @coherence/design-system/ui/combobox",
+   "props": {
+    "Size": {
+     "values": {
+      "Default": {
+       "kind": "ignore",
+       "note": "single-size trigger"
+      },
+      "Large": {
+       "kind": "unsupported",
+       "note": "no code size"
+      },
+      "Small": {
+       "kind": "unsupported",
+       "note": "no code size"
+      },
+      "Mini": {
+       "kind": "unsupported",
+       "note": "no code size"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Placeholder": {
+       "kind": "ignore",
+       "note": "SelectValue placeholder"
+      },
+      "Default": {
+       "kind": "attr",
+       "attr": "defaultValue"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Error": {
+       "kind": "attr",
+       "attr": "aria-invalid"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    },
+    "Lines": {
+     "values": {
+      "1 Line": {
+       "kind": "ignore"
+      },
+      "2 Lines": {
+       "kind": "children",
+       "note": "two-line trigger content"
+      }
+     }
+    },
+    "Show Decoration": {
+     "kind": "children",
+     "note": "leading icon in the trigger"
+    },
+    "Show Prepend": {
+     "kind": "children",
+     "note": "prepend text in the trigger"
+    }
+   },
+   "source": "CONVENTIONS §4.2"
+  },
+  "Select Menu Group Label": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "SelectGroup",
+      "SelectLabel"
+     ],
+     "from": "@coherence/design-system/ui/select"
+    }
+   ],
+   "structure": "<SelectGroup><SelectLabel/>…</SelectGroup>",
+   "props": {
+    "Type": {
+     "values": {
+      "Small": {
+       "kind": "ignore"
+      },
+      "Regular": {
+       "kind": "ignore"
+      }
+     }
+    },
+    "Indented?": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "class",
+       "note": "pl-8 indent — confirm vs frame"
+      }
+     }
+    }
+   }
+  },
+  "Select Menu Overflow": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "SelectScrollUpButton",
+      "SelectScrollDownButton"
+     ],
+     "from": "@coherence/design-system/ui/select"
+    }
+   ],
+   "structure": "built into SelectContent automatically",
+   "props": {
+    "Scroll Direction": {
+     "values": {
+      "Scroll Up": {
+       "kind": "ignore",
+       "note": "automatic"
+      },
+      "Scroll Down": {
+       "kind": "ignore",
+       "note": "automatic"
+      }
+     }
+    }
+   }
+  },
+  "Separator": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Separator"
+     ],
+     "from": "@coherence/design-system/ui/separator"
+    }
+   ],
+   "structure": "<Separator orientation=…/>",
+   "props": {
+    "Direction": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Vertical": {
+       "kind": "attr",
+       "attr": "orientation",
+       "note": "orientation=\"vertical\""
+      }
+     }
+    },
+    "Spacing": {
+     "values": {
+      "None": {
+       "kind": "ignore"
+      },
+      "Regular": {
+       "kind": "class",
+       "note": "my-4 (vertical: mx-4)"
+      },
+      "Spacious": {
+       "kind": "class",
+       "note": "my-6 — confirm vs frame"
+      }
+     }
+    }
+   }
+  },
+  "Sheet": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Sheet",
+      "SheetTrigger",
+      "SheetContent",
+      "SheetHeader",
+      "SheetTitle",
+      "SheetFooter"
+     ],
+     "from": "@coherence/design-system/ui/sheet"
+    }
+   ],
+   "structure": "<Sheet><SheetTrigger asChild>…</SheetTrigger><SheetContent side=…><SheetHeader><SheetTitle/></SheetHeader>{body}<SheetFooter/></SheetContent></Sheet>",
+   "props": {
+    "Scrollable": {
+     "values": {
+      "True": {
+       "kind": "class",
+       "note": "overflow-y-auto on the body"
+      },
+      "False": {
+       "kind": "ignore"
+      }
+     }
+    }
+   }
+  },
+  "Sidebar Badge": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "SidebarMenuBadge"
+     ],
+     "from": "@coherence/design-system/ui/sidebar"
+    }
+   ],
+   "structure": "<SidebarMenuBadge>{n}</SidebarMenuBadge>",
+   "source": "CONVENTIONS §4.4",
+   "props": {}
+  },
+  "Sidebar Group Label": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "SidebarGroup",
+      "SidebarGroupLabel",
+      "SidebarGroupAction"
+     ],
+     "from": "@coherence/design-system/ui/sidebar"
+    }
+   ],
+   "structure": "<SidebarGroup><SidebarGroupLabel/>(+<SidebarGroupAction/>)…</SidebarGroup>",
+   "props": {
+    "Type": {
+     "values": {
+      "Base": {
+       "kind": "ignore"
+      },
+      "Action": {
+       "kind": "children",
+       "note": "+ <SidebarGroupAction>"
+      },
+      "Expanded": {
+       "kind": "children",
+       "note": "collapsible group open"
+      },
+      "Collapsed": {
+       "kind": "children",
+       "note": "collapsible group closed"
+      }
+     }
+    }
+   },
+   "source": "CONVENTIONS §4.4"
+  },
+  "Sidebar Item / Collapsed": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "SidebarMenuItem",
+      "SidebarMenuButton"
+     ],
+     "from": "@coherence/design-system/ui/sidebar"
+    }
+   ],
+   "structure": "collapsed rail item: <SidebarMenuItem><SidebarMenuButton isActive tooltip=…><Icon/></SidebarMenuButton></SidebarMenuItem>",
+   "props": {
+    "State": {
+     "values": {
+      "Regular": {
+       "kind": "ignore"
+      },
+      "Active": {
+       "kind": "attr",
+       "attr": "isActive"
+      }
+     }
+    },
+    "Icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    }
+   },
+   "source": "CONVENTIONS §4.4"
+  },
+  "Sidebar Item / Expanded / 1st Level": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "SidebarMenuItem",
+      "SidebarMenuButton",
+      "SidebarMenuBadge",
+      "SidebarMenuSub"
+     ],
+     "from": "@coherence/design-system/ui/sidebar"
+    }
+   ],
+   "structure": "<SidebarMenuItem><SidebarMenuButton isActive><Icon/>{label}</SidebarMenuButton>…</SidebarMenuItem>",
+   "props": {
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Active": {
+       "kind": "attr",
+       "attr": "isActive"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Active Focus": {
+       "kind": "pseudo",
+       "note": "baked in"
+      }
+     }
+    },
+    "Type": {
+     "values": {
+      "Base": {
+       "kind": "ignore"
+      },
+      "Expanded": {
+       "kind": "children",
+       "note": "+ <SidebarMenuSub> open (Collapsible)"
+      },
+      "Collapsed": {
+       "kind": "children",
+       "note": "+ chevron, sub closed"
+      },
+      "Dropdown": {
+       "kind": "children",
+       "note": "+ <SidebarMenuAction> DropdownMenu"
+      },
+      "Badge": {
+       "kind": "children",
+       "note": "+ <SidebarMenuBadge>"
+      }
+     }
+    },
+    "Icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    }
+   },
+   "source": "CONVENTIONS §4.4"
+  },
+  "Sidebar Item / Expanded / 2nd Level": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "SidebarMenuSubItem",
+      "SidebarMenuSubButton"
+     ],
+     "from": "@coherence/design-system/ui/sidebar"
+    }
+   ],
+   "structure": "<SidebarMenuSubItem><SidebarMenuSubButton isActive>{label}</SidebarMenuSubButton></SidebarMenuSubItem>",
+   "props": {
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Active": {
+       "kind": "attr",
+       "attr": "isActive"
+      }
+     }
+    }
+   },
+   "source": "CONVENTIONS §4.4"
+  },
+  "Skeleton": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Skeleton"
+     ],
+     "from": "@coherence/design-system/ui/skeleton"
+    }
+   ],
+   "structure": "<Skeleton className=\"h-4 w-[…]\"/> — size from frame geometry",
+   "props": {}
+  },
+  "Skeleton / Placeholder Avatar": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Skeleton"
+     ],
+     "from": "@coherence/design-system/ui/skeleton"
+    }
+   ],
+   "structure": "<Skeleton className=\"size-8 rounded-round\"/>",
+   "props": {}
+  },
+  "Skeleton / Placeholder Line": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Skeleton"
+     ],
+     "from": "@coherence/design-system/ui/skeleton"
+    }
+   ],
+   "structure": "<Skeleton className=\"h-4 w-full\"/>",
+   "props": {}
+  },
+  "Skeleton / Placeholder Object": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Skeleton"
+     ],
+     "from": "@coherence/design-system/ui/skeleton"
+    }
+   ],
+   "structure": "<Skeleton className=\"h-32 w-full rounded-md\"/>",
+   "props": {}
+  },
+  "Slider Horizontal": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Slider"
+     ],
+     "from": "@coherence/design-system/ui/slider"
+    }
+   ],
+   "structure": "<Slider defaultValue={[…]} max={100}/>",
+   "props": {
+    "Type": {
+     "values": {
+      "Default": {
+       "kind": "ignore",
+       "note": "single thumb"
+      },
+      "Range narrow": {
+       "kind": "attr",
+       "attr": "defaultValue",
+       "note": "two-thumb range"
+      },
+      "Range wide": {
+       "kind": "attr",
+       "attr": "defaultValue",
+       "note": "two-thumb range"
+      }
+     }
+    }
+   },
+   "source": "CONVENTIONS §4.3"
+  },
+  "Slider Vertical": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Slider"
+     ],
+     "from": "@coherence/design-system/ui/slider"
+    }
+   ],
+   "structure": "<Slider orientation=\"vertical\" …/>",
+   "props": {
+    "Type": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Range narrow": {
+       "kind": "attr",
+       "attr": "defaultValue"
+      },
+      "Range wide": {
+       "kind": "attr",
+       "attr": "defaultValue"
+      }
+     }
+    }
+   },
+   "source": "CONVENTIONS §4.3"
+  },
+  "Sonner": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Toaster"
+     ],
+     "from": "@coherence/design-system/ui/sonner"
+    }
+   ],
+   "structure": "<Toaster/> mounted once + toast(…) calls — §6: NEVER fire toasts on crash/error paths",
+   "props": {
+    "Stack": {
+     "values": {
+      "1 Level": {
+       "kind": "ignore",
+       "note": "runtime stacking"
+      },
+      "2 Levels": {
+       "kind": "ignore",
+       "note": "runtime stacking"
+      },
+      "3 Levels": {
+       "kind": "ignore",
+       "note": "runtime stacking"
+      }
+     }
+    }
+   },
+   "source": "CONVENTIONS §6"
+  },
+  "Sonner Content": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Toaster"
+     ],
+     "from": "@coherence/design-system/ui/sonner"
+    }
+   ],
+   "structure": "toast(title, { description, action }) shapes",
+   "props": {
+    "Type": {
+     "values": {
+      "Simple": {
+       "kind": "ignore",
+       "note": "toast(title)"
+      },
+      "Line and button": {
+       "kind": "ignore",
+       "note": "toast + action"
+      },
+      "Lines and button": {
+       "kind": "ignore",
+       "note": "toast + description + action"
+      },
+      "Loading": {
+       "kind": "ignore",
+       "note": "toast.loading"
+      }
+     }
+    },
+    "Icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    },
+    "Show icon": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    }
+   }
+  },
+  "Spinner": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Spinner"
+     ],
+     "from": "@coherence/design-system/ui/spinner"
+    }
+   ],
+   "structure": "<Spinner/>",
+   "props": {
+    "Type": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Mirrored": {
+       "kind": "ignore",
+       "note": "visual variant only in Figma"
+      }
+     }
+    }
+   }
+  },
+  "Status dot": {
+   "kind": "props",
+   "react": {
+    "import": "StatusDot",
+    "from": "@coherence/design-system/ui/status-dot",
+    "file": "packages/cw-design-system-ts/src/components/ui/status-dot.tsx"
+   },
+   "cva": "statusDotVariants",
+   "props": {
+    "Status": {
+     "mapsTo": "status",
+     "values": {
+      "Success": {
+       "kind": "prop",
+       "value": "success"
+      },
+      "Info": {
+       "kind": "prop",
+       "value": "info"
+      },
+      "Warning": {
+       "kind": "prop",
+       "value": "warning"
+      },
+      "Error": {
+       "kind": "prop",
+       "value": "error"
+      }
+     }
+    }
+   },
+   "defaults": {
+    "status": "success"
+   }
+  },
+  "Status pill": {
+   "kind": "props",
+   "react": {
+    "import": "StatusPill",
+    "from": "@coherence/design-system/ui/status-pill",
+    "file": "packages/cw-design-system-ts/src/components/ui/status-pill.tsx"
+   },
+   "cva": "statusPillVariants",
+   "props": {
+    "Status": {
+     "mapsTo": "status",
+     "values": {
+      "Success": {
+       "kind": "prop",
+       "value": "success"
+      },
+      "Info": {
+       "kind": "prop",
+       "value": "info"
+      },
+      "Warning": {
+       "kind": "prop",
+       "value": "warning"
+      },
+      "Error": {
+       "kind": "prop",
+       "value": "error"
+      }
+     }
+    },
+    "Strength": {
+     "mapsTo": "strength",
+     "values": {
+      "Subtle": {
+       "kind": "prop",
+       "value": "subtle"
+      },
+      "Strong": {
+       "kind": "prop",
+       "value": "strong"
+      }
+     }
+    },
+    "Show dismiss": {
+     "kind": "children",
+     "note": "true → trailing dismiss X (lucide XIcon via the showDismiss prop); pair with onDismiss to make it interactive"
+    }
+   },
+   "defaults": {
+    "status": "success",
+    "strength": "subtle"
+   }
+  },
+  "checkbox field (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/checkbox-field"
+   },
+   "note": "Bordered checkbox 'chip' (Figma 'Phy' / 'Show marks' toolbar fields). No Figma twin yet — reconciles the chip's unofficial/* border/fill to input-border/input-background."
+  },
+  "stepper (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/stepper"
+   },
+   "note": "Bordered '− value +' numeric nudge (raw-trace window/speed/gain steppers). No Figma twin yet — reconciles the Figma clusters' unofficial/* tokens to input-*."
+  },
+  "Switch": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Switch"
+     ],
+     "from": "@coherence/design-system/ui/switch"
+    }
+   ],
+   "structure": "<Switch/> (+ Label)",
+   "props": {
+    "Checked?": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "defaultChecked"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    }
+   }
+  },
+  "Switch Group": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Field",
+      "FieldLabel"
+     ],
+     "from": "@coherence/design-system/ui/field"
+    }
+   ],
+   "structure": "Switch + Label rows",
+   "props": {
+    "Checked?": {
+     "values": {
+      "False": {
+       "kind": "ignore"
+      },
+      "True": {
+       "kind": "attr",
+       "attr": "defaultChecked"
+      }
+     }
+    },
+    "Layout": {
+     "values": {
+      "Inline": {
+       "kind": "children",
+       "note": "label beside switch"
+      },
+      "Block": {
+       "kind": "children",
+       "note": "label + description block"
+      }
+     }
+    }
+   }
+  },
+  "Tab": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "TabsTrigger"
+     ],
+     "from": "@coherence/design-system/ui/tabs"
+    }
+   ],
+   "structure": "<TabsTrigger value=…>(<Icon/>)?{label}(<Badge/>)?</TabsTrigger>",
+   "props": {
+    "Content": {
+     "values": {
+      "Label": {
+       "kind": "children",
+       "note": "text only"
+      },
+      "Icon": {
+       "kind": "children",
+       "note": "icon only"
+      },
+      "Icon + Label": {
+       "kind": "children",
+       "note": "icon + text"
+      }
+     }
+    },
+    "Size": {
+     "values": {
+      "Regular": {
+       "kind": "ignore",
+       "note": "single-size triggers"
+      },
+      "Large": {
+       "kind": "unsupported",
+       "note": "no code size"
+      },
+      "Small": {
+       "kind": "unsupported",
+       "note": "no code size"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Inactive": {
+       "kind": "ignore"
+      },
+      "Active": {
+       "kind": "attr",
+       "attr": "value",
+       "note": "the selected trigger — set Tabs value/defaultValue"
+      },
+      "Inactive Hover": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Inactive Focus": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Active Focus": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    },
+    "Show counter": {
+     "kind": "children",
+     "note": "+ <Badge variant=\"secondary\"> counter"
+    },
+    "Icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    }
+   }
+  },
+  "Table Cell": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "TableCell"
+     ],
+     "from": "@coherence/design-system/ui/table"
+    }
+   ],
+   "structure": "<TableCell> with the matching content composition",
+   "props": {
+    "Content": {
+     "values": {
+      "Text (1 Line)": {
+       "kind": "children",
+       "note": "text"
+      },
+      "Text (2 Lines)": {
+       "kind": "children",
+       "note": "two-line text block"
+      },
+      "Actions": {
+       "kind": "children",
+       "note": "row-actions DropdownMenu (ghost icon Button trigger)"
+      },
+      "Checkbox": {
+       "kind": "children",
+       "note": "<Checkbox/>"
+      },
+      "Badge": {
+       "kind": "children",
+       "note": "<Badge/>"
+      },
+      "Buttons": {
+       "kind": "children",
+       "note": "<Button> children"
+      },
+      "Avatar": {
+       "kind": "children",
+       "note": "<Avatar/>"
+      },
+      "Avatar + Name": {
+       "kind": "children",
+       "note": "<Avatar/> + name text"
+      },
+      "Input": {
+       "kind": "children",
+       "note": "<Input/>"
+      }
+     }
+    },
+    "Alignment": {
+     "values": {
+      "Left": {
+       "kind": "ignore"
+      },
+      "Right": {
+       "kind": "class",
+       "note": "text-right"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Hover": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Active": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Selected": {
+       "kind": "attr",
+       "attr": "data-state",
+       "note": "data-state=\"selected\" on the TableRow"
+      }
+     }
+    },
+    "Show border": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "Show icon 2": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "Show icon 3": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "Show button 2": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "Show button 3": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "Show badge 2": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "Show badge 3": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    }
+   }
+  },
+  "Table Header": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "TableHead"
+     ],
+     "from": "@coherence/design-system/ui/table"
+    }
+   ],
+   "structure": "<TableHead> with text / sortable button / checkbox content",
+   "props": {
+    "Content": {
+     "values": {
+      "Text": {
+       "kind": "children",
+       "note": "text"
+      },
+      "Sortable": {
+       "kind": "children",
+       "note": "<Button variant=\"ghost\"> + arrow icon"
+      },
+      "Checkbox": {
+       "kind": "children",
+       "note": "<Checkbox/>"
+      },
+      "Empty": {
+       "kind": "children",
+       "note": "empty head"
+      }
+     }
+    },
+    "Alignment": {
+     "values": {
+      "Left": {
+       "kind": "ignore"
+      },
+      "Right": {
+       "kind": "class",
+       "note": "text-right"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Hover": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Active": {
+       "kind": "pseudo",
+       "note": "baked in"
+      },
+      "Selected": {
+       "kind": "attr",
+       "attr": "data-state",
+       "note": "data-state=\"selected\" on the TableRow"
+      }
+     }
+    },
+    "Show border": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    }
+   }
+  },
+  "Tabs": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Tabs",
+      "TabsList",
+      "TabsTrigger",
+      "TabsContent"
+     ],
+     "from": "@coherence/design-system/ui/tabs"
+    }
+   ],
+   "structure": "<Tabs defaultValue=…><TabsList>{<TabsTrigger/> × N}</TabsList><TabsContent value=…/></Tabs>",
+   "note": "code-only: tabsListVariants variant=\"line\" (underline style) has no Figma twin yet",
+   "props": {
+    "Parts": {
+     "values": {
+      "2 Parts": {
+       "kind": "children",
+       "note": "2 TabsTriggers"
+      },
+      "3 Parts": {
+       "kind": "children",
+       "note": "3 TabsTriggers"
+      },
+      "4 Parts": {
+       "kind": "children",
+       "note": "4 TabsTriggers"
+      },
+      "5 Parts": {
+       "kind": "children",
+       "note": "5 TabsTriggers"
+      }
+     }
+    },
+    "Size": {
+     "values": {
+      "Regular": {
+       "kind": "ignore"
+      },
+      "Large": {
+       "kind": "unsupported",
+       "note": "no code size"
+      },
+      "Small": {
+       "kind": "unsupported",
+       "note": "no code size"
+      }
+     }
+    },
+    "Content": {
+     "values": {
+      "Label": {
+       "kind": "children",
+       "note": "text triggers"
+      },
+      "Icon": {
+       "kind": "children",
+       "note": "icon triggers"
+      },
+      "Icon + Label": {
+       "kind": "children",
+       "note": "icon + text triggers"
+      }
+     }
+    }
+   }
+  },
+  "Textarea": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Textarea"
+     ],
+     "from": "@coherence/design-system/ui/textarea"
+    }
+   ],
+   "structure": "<Textarea placeholder=…/>",
+   "props": {
+    "State": {
+     "values": {
+      "Empty": {
+       "kind": "ignore"
+      },
+      "Placeholder": {
+       "kind": "attr",
+       "attr": "placeholder",
+       "note": "the placeholder text attribute"
+      },
+      "Value": {
+       "kind": "attr",
+       "attr": "defaultValue",
+       "note": "render with a value"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      },
+      "Error": {
+       "kind": "attr",
+       "attr": "aria-invalid",
+       "note": "aria-invalid drives the error border/ring"
+      },
+      "Error Focus": {
+       "kind": "pseudo",
+       "note": "focus ring in error state — baked in (aria-invalid + focus-visible)"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      }
+     }
+    },
+    "Roundness": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Round": {
+       "kind": "unsupported",
+       "note": "No code equivalent — the kit is rounded-md only. Flag to the user; do not approximate with rounded-round."
+      }
+     }
+    },
+    "Show resizable": {
+     "kind": "class",
+     "note": "false → resize-none"
+    }
+   }
+  },
+  "Toggle Button": {
+   "kind": "props",
+   "react": {
+    "import": "Toggle",
+    "from": "@coherence/design-system/ui/toggle",
+    "file": "packages/cw-design-system-ts/src/components/ui/toggle.tsx"
+   },
+   "cva": "toggleVariants",
+   "props": {
+    "Skin": {
+     "mapsTo": "variant",
+     "values": {
+      "Outlined": {
+       "kind": "prop",
+       "value": "outline"
+      },
+      "Ghost": {
+       "kind": "prop",
+       "value": "default"
+      }
+     }
+    },
+    "Size": {
+     "mapsTo": "size",
+     "values": {
+      "Default": {
+       "kind": "prop",
+       "value": "default"
+      },
+      "Large": {
+       "kind": "prop",
+       "value": "lg"
+      },
+      "Small": {
+       "kind": "prop",
+       "value": "sm"
+      },
+      "Mini": {
+       "kind": "prop",
+       "value": "xs"
+      }
+     }
+    },
+    "Active?": {
+     "values": {
+      "Yes": {
+       "kind": "attr",
+       "attr": "pressed",
+       "note": "pressed/defaultPressed → data-state=on"
+      },
+      "No": {
+       "kind": "ignore"
+      }
+     }
+    },
+    "Position": {
+     "values": {
+      "Left": {
+       "kind": "children",
+       "note": "grouped toggles → wrap in <ToggleGroup> + <ToggleGroupItem>; position is automatic"
+      },
+      "Middle": {
+       "kind": "children",
+       "note": "grouped toggles → wrap in <ToggleGroup> + <ToggleGroupItem>; position is automatic"
+      },
+      "Right": {
+       "kind": "children",
+       "note": "grouped toggles → wrap in <ToggleGroup> + <ToggleGroupItem>; position is automatic"
+      },
+      "Single": {
+       "kind": "children",
+       "note": "grouped toggles → wrap in <ToggleGroup> + <ToggleGroupItem>; position is automatic"
+      }
+     }
+    },
+    "State": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Disabled": {
+       "kind": "attr",
+       "attr": "disabled"
+      },
+      "Focus": {
+       "kind": "pseudo",
+       "note": "focus-visible ring — baked in; never a prop"
+      }
+     }
+    },
+    "Roundness": {
+     "values": {
+      "Default": {
+       "kind": "ignore"
+      },
+      "Round": {
+       "kind": "unsupported",
+       "note": "No code equivalent — the kit is rounded-md only. Flag to the user; do not approximate with rounded-round."
+      }
+     }
+    },
+    "Label": {
+     "kind": "children",
+     "note": "toggle label child"
+    },
+    "Show left icon": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    },
+    "⮑ Left icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    },
+    "⮑ Right icon": {
+     "kind": "children",
+     "note": "Icon / <name> → lucide-react PascalCase import as a child"
+    },
+    "Show right icon": {
+     "kind": "children",
+     "note": "true → include the corresponding child/slot"
+    }
+   },
+   "defaults": {
+    "variant": "default",
+    "size": "default"
+   },
+   "source": "CONVENTIONS §2 (Toggle & Toggle Group)"
+  },
+  "Toggle Icon Button": {
+   "kind": "alias",
+   "target": "Toggle Button",
+   "fixedProps": {},
+   "note": "Toggle with a single icon child (no label). Sizes/Skin/Active? follow the Toggle Button entry."
+  },
+  "Tooltip": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Tooltip",
+      "TooltipTrigger",
+      "TooltipContent"
+     ],
+     "from": "@coherence/design-system/ui/tooltip"
+    }
+   ],
+   "structure": "<Tooltip><TooltipTrigger asChild>…</TooltipTrigger><TooltipContent side=…>{text}</TooltipContent></Tooltip>",
+   "props": {
+    "Tooltip text": {
+     "kind": "children",
+     "note": "content text"
+    },
+    "Side": {
+     "values": {
+      "Top": {
+       "kind": "attr",
+       "attr": "side",
+       "note": "side=\"top\""
+      },
+      "Bottom": {
+       "kind": "attr",
+       "attr": "side",
+       "note": "side=\"bottom\""
+      },
+      "Left": {
+       "kind": "attr",
+       "attr": "side",
+       "note": "side=\"left\""
+      },
+      "Right": {
+       "kind": "attr",
+       "attr": "side",
+       "note": "side=\"right\""
+      }
+     }
+    }
+   }
+  },
+  "Vertical Field": {
+   "kind": "recipe",
+   "imports": [
+    {
+     "names": [
+      "Field",
+      "FieldLabel",
+      "FieldDescription"
+     ],
+     "from": "@coherence/design-system/ui/field"
+    }
+   ],
+   "structure": "<Field orientation=\"vertical\"><FieldLabel/>{control}<FieldDescription/></Field>",
+   "props": {
+    "Type": {
+     "values": {
+      "Select": {
+       "kind": "children",
+       "note": "control child = Select"
+      },
+      "Text Value": {
+       "kind": "children",
+       "note": "control child = Text Value"
+      },
+      "Radio": {
+       "kind": "children",
+       "note": "control child = Radio"
+      },
+      "Textarea": {
+       "kind": "children",
+       "note": "control child = Textarea"
+      },
+      "Checkbox": {
+       "kind": "children",
+       "note": "control child = Checkbox"
+      },
+      "Slider": {
+       "kind": "children",
+       "note": "control child = Slider"
+      }
+     }
+    }
+   },
+   "source": "CONVENTIONS §4.3"
+  },
+  "VizCard (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@/components/ui/VizCard"
+   },
+   "note": "workstation custom (visualization chrome); no Figma twin yet."
+  },
+  "aspect-ratio (react)": {
+   "kind": "notInFigma",
+   "react": {
+    "from": "@coherence/design-system/ui/aspect-ratio"
+   },
+   "note": "deferred — not in the Figma kit (CONVENTIONS §2)."
+  },
+  "collapsible (react)": {
+   "kind": "notInFigma",
+   "react": {
+    "from": "@coherence/design-system/ui/collapsible"
+   },
+   "note": "deferred — not in the Figma kit (§2). Sidebar expand/collapse uses it internally."
+  },
+  "combobox (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/combobox"
+   },
+   "note": "shares Figma 'Select & Combobox' — see that entry's §4.2 UX-intent rule."
+  },
+  "context-menu (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/context-menu"
+   },
+   "note": "Figma models context menus via Menu / Menu Item; trigger differs in code only."
+  },
+  "dropdown-menu (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/dropdown-menu"
+   },
+   "note": "Figma models dropdowns via the shared Menu / Menu Item sets (see those entries)."
+  },
+  "input-group (react)": {
+   "kind": "notInFigma",
+   "react": {
+    "from": "@coherence/design-system/ui/input-group"
+   },
+   "note": "deferred — Figma models decorations inside the Input set; input-group.tsx is the code composition surface."
+  },
+  "bubble (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/bubble"
+   },
+   "note": "Chat message bubble, 7 variants (June 2026 shadcn chat set). Re-architected to kit tokens — the upstream cn-* skin layer was dropped for inline cva. No Figma twin yet (CONVENTIONS §2)."
+  },
+  "message (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/message"
+   },
+   "note": "Chat message row (avatar + header + content + footer; align start/end). June 2026 shadcn chat set, re-architected to kit tokens. No Figma twin yet (CONVENTIONS §2)."
+  },
+  "attachment (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/attachment"
+   },
+   "note": "Chat file/media attachment chip; state (idle/uploading/processing/error/done) × size × orientation. June 2026 shadcn chat set, re-architected to kit tokens. No Figma twin yet (CONVENTIONS §2)."
+  },
+  "marker (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/marker"
+   },
+   "note": "In-thread marker / separator / section break (default/separator/border). June 2026 shadcn chat set, re-architected to kit tokens. No Figma twin yet (CONVENTIONS §2)."
+  },
+  "message-scroller (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/message-scroller"
+   },
+   "note": "Autoscrolling chat viewport; scroll-anchoring behavior from @shadcn/react, styling re-architected to kit tokens (June 2026 chat set). No Figma twin yet (CONVENTIONS §2)."
+  },
+  "menubar (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/menubar"
+   },
+   "note": "no Figma twin; compose from Menu pieces if a design shows one — STOP and confirm."
+  },
+  "native-select (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/native-select"
+   },
+   "note": "React-only by design (§2)."
+  },
+  "popover (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/popover"
+   },
+   "note": "React-only by design (§2); Figma's Date Picker/Menu compositions imply it. No Figma component set."
+  },
+  "text (react)": {
+   "kind": "reactOnly",
+   "react": {
+    "from": "@coherence/design-system/ui/text"
+   },
+   "note": "maps to Figma TEXT STYLES (heading-1…body-xs), not a component set — see the typography system / <Text variant>."
+  },
+  "toggle-group (react)": {
+   "kind": "notInFigma",
+   "react": {
+    "from": "@coherence/design-system/ui/toggle-group"
+   },
+   "note": "deferred — Figma models grouping via Toggle Button Position; ToggleGroup is the code surface."
+  }
+ }
+}

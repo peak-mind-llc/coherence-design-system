@@ -1,0 +1,13 @@
+{
+  "$comment": "Code<->Figma contract for the ALPHA primitives (PEA-219 reorg). Code carries ONLY the alpha rungs the semantic layer actually consumes (5 of Figma's 30 — the other 25 are intentionally not-ported per the no-tokens-for-hypothetical-needs rule; add a rung here + in primitives.json when a semantic token needs it). 8-digit hex = RRGGBBAA. Figma home post-merge: the `primitives` collection, alpha/ group (sibling of color/, mirroring code primitives.{color,alpha}); pre-merge: the `alpha (primitive)` collection as white|black/alpha-N. check_primitive_drift.mjs asserts: code alpha set == this snapshot (bijection), hex match, AND two-way usage (every {primitives.alpha.*} reference in light/dark.json is snapshotted; every snapshot rung is consumed by at least one semantic token). CI can't reach Figma live — refresh via use_figma per CONVENTIONS.md §8.",
+  "fileKey": "fOvC9IJr3X6yZngjotX2ws",
+  "figmaCollection": "primitives",
+  "figmaGroup": "alpha",
+  "alpha": {
+    "white.0":  { "hex": "#FFFFFF00", "figmaName": "alpha/white/alpha-0",  "code": "primitives.alpha.white.0" },
+    "white.5":  { "hex": "#FFFFFF0D", "figmaName": "alpha/white/alpha-5",  "code": "primitives.alpha.white.5" },
+    "white.10": { "hex": "#FFFFFF1A", "figmaName": "alpha/white/alpha-10", "code": "primitives.alpha.white.10" },
+    "white.15": { "hex": "#FFFFFF26", "figmaName": "alpha/white/alpha-15", "code": "primitives.alpha.white.15" },
+    "black.50": { "hex": "#00000080", "figmaName": "alpha/black/alpha-50", "code": "primitives.alpha.black.50" }
+  }
+}
