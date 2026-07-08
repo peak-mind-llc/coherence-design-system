@@ -1,5 +1,5 @@
 {
-  "$comment": "Code<->Figma contract — full v2 semantic set. Resolved hex (light/dark) of the matching Figma 'color' collection variables (collection renamed from 'semantic' in the PEA-219 reorg), pulled via use_figma after the PEA-219 WS1 (unofficial retirement) + WS2 (on->foreground merge) execution. Flat status colors background/foreground × success/info/warning/error replaced the earlier -subtle/-emphasis success+warning pair (sourced from the updated Status Pill, node 1558:8809). border-subtle is the promoted unofficial/border-1 (renamed in place — the 259 Charts grid-line bindings survive). Drift-check Check C asserts dist/tokens.css matches these; Check D asserts the code<->snapshot name bijection. Refresh via use_figma per CONVENTIONS.md §8.",
+  "$comment": "Code<->Figma contract — full v2 semantic set. Resolved hex (light/dark) of the matching Figma 'color' collection variables (collection renamed from 'semantic' in the PEA-219 reorg), pulled via use_figma after the PEA-219 WS1 (unofficial retirement) + WS2 (on->foreground merge) execution. Flat status colors background/foreground × success/info/warning/error replaced the earlier -subtle/-emphasis success+warning pair (sourced from the updated Status Pill, node 1558:8809). border-subtle is the promoted unofficial/border-1 (renamed in place — the 259 Charts grid-line bindings survive). Drift-check Check C asserts dist/tokens.css matches these; Check D asserts the code<->snapshot name bijection. Refresh via use_figma per CONVENTIONS.md §8. The 8 foreground-vigilance-* entries were authored code-first (code-is-truth), then their Figma variables (foreground/vigilance-*, in the color collection's foreground group) were created aliasing the same primitives in both light+dark modes and verified 1:1 against these values (theme-independent — same primitive both modes, unlike the mode-flipping status tokens).",
   "fileKey": "fOvC9IJr3X6yZngjotX2ws",
   "collection": "color",
   "pulledAtCommit": "PEA-219 WS1+WS2 + parity-decisions + hardening + reorg — full 47-token v2 set (added foreground-icon for icon parity; promoted unofficial/border-1 to border-subtle for the Charts grid lines)",
@@ -273,6 +273,46 @@
       "light": "#C10007",
       "dark": "#FF6467",
       "figmaName": "foreground/error"
+    },
+    "foreground-vigilance-0": {
+      "light": "#737373",
+      "dark": "#737373",
+      "figmaName": "foreground/vigilance-0"
+    },
+    "foreground-vigilance-a1": {
+      "light": "#00A63E",
+      "dark": "#00A63E",
+      "figmaName": "foreground/vigilance-a1"
+    },
+    "foreground-vigilance-a2": {
+      "light": "#7CCF00",
+      "dark": "#7CCF00",
+      "figmaName": "foreground/vigilance-a2"
+    },
+    "foreground-vigilance-a3": {
+      "light": "#F0B100",
+      "dark": "#F0B100",
+      "figmaName": "foreground/vigilance-a3"
+    },
+    "foreground-vigilance-b1": {
+      "light": "#FF6900",
+      "dark": "#FF6900",
+      "figmaName": "foreground/vigilance-b1"
+    },
+    "foreground-vigilance-b2": {
+      "light": "#FB2C36",
+      "dark": "#FB2C36",
+      "figmaName": "foreground/vigilance-b2"
+    },
+    "foreground-vigilance-b3": {
+      "light": "#E7000B",
+      "dark": "#E7000B",
+      "figmaName": "foreground/vigilance-b3"
+    },
+    "foreground-vigilance-c": {
+      "light": "#C10007",
+      "dark": "#C10007",
+      "figmaName": "foreground/vigilance-c"
     },
     "border-success-subtle": {
       "light": "#DCFCE7",
