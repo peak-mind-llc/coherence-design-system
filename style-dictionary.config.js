@@ -5,6 +5,8 @@
  *   dist/tokens.css  — CSS custom properties scoped per theme
  *                       :root      ← base + light
  *                       .dark      ← dark overrides (shadcn convention)
+ *                       .light     ← light re-declared (forced-light escape
+ *                                    hatch below a .dark ancestor)
  *                       Plus an @theme block mapping color-* / radius-*
  *                       tokens to Tailwind v4 utility colors, mirroring
  *                       what `shadcn init` would write directly.
@@ -92,6 +94,15 @@ const darkBlock = Object.entries(darkFlat)
   .map(([k, v]) => cssLine(k, resolveAlias(v)))
   .join('\n');
 
+// Forced-light escape hatch: re-declares the light values closer than any
+// ancestor .dark, for subtrees that must render light regardless of the
+// document theme (screenshot capture, future mixed-theme surfaces). Key
+// coverage vs .dark is guaranteed by the light↔dark parity gate (Check B
+// in scripts/check_design_token_drift.mjs).
+const lightBlock = Object.entries(lightFlat)
+  .map(([k, v]) => cssLine(k, resolveAlias(v)))
+  .join('\n');
+
 // @theme block maps tokens to Tailwind v4 utility colors. Mirrors what
 // `npx shadcn init` writes — Tailwind picks these up so `bg-background`,
 // `text-foreground`, `border-border`, etc. all resolve to our token values.
@@ -164,6 +175,13 @@ ${rootBlock}
 
 .dark {
 ${darkBlock}
+}
+
+/* Forced-light escape hatch — light values re-declared so a subtree can
+ * render light below a .dark ancestor (screenshot capture, mixed-theme
+ * surfaces). Placed after .dark so it wins at equal specificity. */
+.light {
+${lightBlock}
 }
 
 ${themeBlock}

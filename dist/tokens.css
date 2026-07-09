@@ -169,6 +169,85 @@
   --border-subtle: #171717;
 }
 
+/* Forced-light escape hatch — light values re-declared so a subtree can
+ * render light below a .dark ancestor (screenshot capture, mixed-theme
+ * surfaces). Placed after .dark so it wins at equal specificity. */
+.light {
+  --background-default: #FFFFFF;
+  --foreground-default: #0A0A0A;
+  --card-background: #FFFFFF;
+  --card-foreground: #0A0A0A;
+  --popover-background: #FFFFFF;
+  --popover-foreground: #0A0A0A;
+  --background-primary: #171717;
+  --foreground-primary: #171717;
+  --foreground-default-inverse: #FAFAFA;
+  --background-default-inverse: #171717;
+  --background-secondary: #F5F5F5;
+  --background-muted: #F5F5F5;
+  --foreground-muted: #737373;
+  --foreground-icon: #737373;
+  --background-accent: #F5F5F5;
+  --background-destructive: #E7000B;
+  --border-default: #E5E5E5;
+  --input-border: #E5E5E5;
+  --ring-default: #A1A1A1;
+  --chart-1: #D4D4D4;
+  --chart-2: #737373;
+  --chart-3: #525252;
+  --chart-4: #404040;
+  --chart-5: #262626;
+  --sidebar-background: #FAFAFA;
+  --sidebar-foreground: #0A0A0A;
+  --sidebar-primary: #171717;
+  --sidebar-on-primary: #FAFAFA;
+  --sidebar-accent: #F5F5F5;
+  --sidebar-on-accent: #171717;
+  --sidebar-border: #E5E5E5;
+  --sidebar-ring: #A1A1A1;
+  --foreground-white: #FFFFFF;
+  --background-primary-hover: #262626;
+  --background-secondary-hover: #F5F5F5;
+  --background-accent-subtle: #FAFAFA;
+  --background-muted-subtle: #FAFAFA;
+  --background-primary-subtle: #E5E5E5;
+  --background-destructive-hover: #FB2C36;
+  --background-destructive-subtle: #FFC9C9;
+  --ring-focus: #D4D4D4;
+  --ring-error: #FFC9C9;
+  --input-background: #FFFFFF00;
+  --input-background-hover: #F5F5F5;
+  --background-overlay: #00000080;
+  --foreground-destructive: #E7000B;
+  --background-success: #DCFCE7;
+  --foreground-success: #008236;
+  --background-info: #DBEAFE;
+  --foreground-info: #1447E6;
+  --background-warning: #FEF9C2;
+  --foreground-warning: #A65F00;
+  --background-error: #FFE2E2;
+  --foreground-error: #C10007;
+  --foreground-vigilance-0: #737373;
+  --foreground-vigilance-a1: #00A63E;
+  --foreground-vigilance-a2: #7CCF00;
+  --foreground-vigilance-a3: #F0B100;
+  --foreground-vigilance-b1: #FF6900;
+  --foreground-vigilance-b2: #FB2C36;
+  --foreground-vigilance-b3: #E7000B;
+  --foreground-vigilance-c: #C10007;
+  --border-success-subtle: #DCFCE7;
+  --border-success-emphasis: #008236;
+  --border-info-subtle: #DBEAFE;
+  --border-info-emphasis: #1447E6;
+  --border-warning-subtle: #FEF9C2;
+  --border-warning-emphasis: #A65F00;
+  --border-error-subtle: #FFE2E2;
+  --border-error-emphasis: #C10007;
+  --border-destructive: #E7000B;
+  --border-primary: #171717;
+  --border-subtle: #F5F5F5;
+}
+
 @theme inline {
   --font-sans: var(--sans);
   --font-heading: var(--heading);
