@@ -1,5 +1,5 @@
 {
-  "$comment": "Code<->Figma contract — full v2 semantic set. Resolved hex (light/dark) of the matching Figma 'color' collection variables (collection renamed from 'semantic' in the PEA-219 reorg), pulled via use_figma after the PEA-219 WS1 (unofficial retirement) + WS2 (on->foreground merge) execution. Flat status colors background/foreground × success/info/warning/error replaced the earlier -subtle/-emphasis success+warning pair (sourced from the updated Status Pill, node 1558:8809). border-subtle is the promoted unofficial/border-1 (renamed in place — the 259 Charts grid-line bindings survive). Drift-check Check C asserts dist/tokens.css matches these; Check D asserts the code<->snapshot name bijection. Refresh via use_figma per CONVENTIONS.md §8. The 8 foreground-vigilance-* entries were authored code-first (code-is-truth), then their Figma variables (foreground/vigilance-*, in the color collection's foreground group) were created aliasing the same primitives in both light+dark modes and verified 1:1 against these values (theme-independent — same primitive both modes, unlike the mode-flipping status tokens).",
+  "$comment": "Code<->Figma contract — full v2 semantic set. Resolved hex (light/dark) of the matching Figma 'color' collection variables (collection renamed from 'semantic' in the PEA-219 reorg), pulled via use_figma after the PEA-219 WS1 (unofficial retirement) + WS2 (on->foreground merge) execution. Flat status colors background/foreground × success/info/warning/error replaced the earlier -subtle/-emphasis success+warning pair (sourced from the updated Status Pill, node 1558:8809). border-subtle is the promoted unofficial/border-1 (renamed in place — the 259 Charts grid-line bindings survive). Drift-check Check C asserts dist/tokens.css matches these; Check D asserts the code<->snapshot name bijection. Refresh via use_figma per CONVENTIONS.md §8. The 8 foreground-vigilance-* entries were authored code-first (code-is-truth), then their Figma variables (foreground/vigilance-*, in the color collection's foreground group) were created aliasing the same primitives in both light+dark modes and verified 1:1 against these values (theme-independent — same primitive both modes, unlike the mode-flipping status tokens). The 12 label-ramp entries (foreground/label-* + background/label-*) were authored the same way — code-first, aliasing primitives, theme-independent — for the clinical annotation-label vocabulary (Adaptive/Rigid/Ambiguous/Monitoring + the valley pair Suppressed/Expected-low). They are the second sanctioned clinical ramp (CONVENTIONS §6, ruled July 2026); their Figma variables must be created in the color collection's foreground/ and background/ groups aliasing these same primitives in both modes.",
   "fileKey": "fOvC9IJr3X6yZngjotX2ws",
   "collection": "color",
   "pulledAtCommit": "PEA-219 WS1+WS2 + parity-decisions + hardening + reorg — full 47-token v2 set (added foreground-icon for icon parity; promoted unofficial/border-1 to border-subtle for the Charts grid lines)",
@@ -313,6 +313,66 @@
       "light": "#C10007",
       "dark": "#C10007",
       "figmaName": "foreground/vigilance-c"
+    },
+    "foreground-label-adaptive": {
+      "light": "#00A63E",
+      "dark": "#00A63E",
+      "figmaName": "foreground/label-adaptive"
+    },
+    "foreground-label-rigid": {
+      "light": "#F54900",
+      "dark": "#F54900",
+      "figmaName": "foreground/label-rigid"
+    },
+    "foreground-label-ambiguous": {
+      "light": "#D08700",
+      "dark": "#D08700",
+      "figmaName": "foreground/label-ambiguous"
+    },
+    "foreground-label-monitoring": {
+      "light": "#737373",
+      "dark": "#737373",
+      "figmaName": "foreground/label-monitoring"
+    },
+    "foreground-label-suppressed": {
+      "light": "#155DFC",
+      "dark": "#155DFC",
+      "figmaName": "foreground/label-suppressed"
+    },
+    "foreground-label-expected-low": {
+      "light": "#0092B8",
+      "dark": "#0092B8",
+      "figmaName": "foreground/label-expected-low"
+    },
+    "background-label-adaptive": {
+      "light": "#00A63E",
+      "dark": "#00A63E",
+      "figmaName": "background/label-adaptive"
+    },
+    "background-label-rigid": {
+      "light": "#F54900",
+      "dark": "#F54900",
+      "figmaName": "background/label-rigid"
+    },
+    "background-label-ambiguous": {
+      "light": "#D08700",
+      "dark": "#D08700",
+      "figmaName": "background/label-ambiguous"
+    },
+    "background-label-monitoring": {
+      "light": "#737373",
+      "dark": "#737373",
+      "figmaName": "background/label-monitoring"
+    },
+    "background-label-suppressed": {
+      "light": "#155DFC",
+      "dark": "#155DFC",
+      "figmaName": "background/label-suppressed"
+    },
+    "background-label-expected-low": {
+      "light": "#0092B8",
+      "dark": "#0092B8",
+      "figmaName": "background/label-expected-low"
     },
     "border-success-subtle": {
       "light": "#DCFCE7",
