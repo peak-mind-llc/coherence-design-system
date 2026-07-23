@@ -24,6 +24,28 @@ export const Default: Story = {
 export const Empty: Story = { args: { value: 0 } };
 export const Complete: Story = { args: { value: 100 } };
 
+/** The "still working, no known end" state — a sliver glides across the track.
+ *  The standard loading line for global loads (case data) and background work. */
+export const Indeterminate: Story = {
+  render: () => (
+    <div className="w-72">
+      <Progress indeterminate />
+    </div>
+  ),
+};
+
+/** As a full-width "line across the screen" — thin, square, pinned to a top edge. */
+export const TopLoadingLine: Story = {
+  render: () => (
+    <div className="relative h-24 w-96 overflow-hidden rounded-md border border-border-default">
+      <Progress indeterminate className="h-0.5 rounded-none" />
+      <div className="flex h-full items-center justify-center">
+        <span className="text-xs text-foreground-muted">Loading case data…</span>
+      </div>
+    </div>
+  ),
+};
+
 export const Animated: Story = {
   render: () => {
     const [v, setV] = useState(13);
